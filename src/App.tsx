@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import PublicationList from './components/PublicationList';
+import PublicationView from './views/PublicationView';
 import PublicationDetail from './components/PublicationDetail';
 import styled from 'styled-components';
 
@@ -18,7 +18,7 @@ const App: React.FC = () => {
         <h1>Content Showcase</h1>
         <Routes>
           {/* Route for listing publications */}
-          <Route path="/" element={<PublicationList />} />
+          <Route path="/" element={<PublicationView />} />
           
           {/* Route for viewing publication details */}
           <Route path="/publications/:id" element={<PublicationDetail />} />
