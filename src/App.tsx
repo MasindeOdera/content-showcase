@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PublicationView from './views/PublicationView';
 import PublicationDetail from './components/PublicationDetail';
-import Container from './components/styles/container/container';
+import Container from './components/styles/container/Container';
 
 
 const App: React.FC = () => {
