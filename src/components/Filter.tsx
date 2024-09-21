@@ -4,12 +4,15 @@ import { FilterProps } from '../types';
 
 const FilterContainer = styled.div`
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
 `;
 
 const FilterSelect = styled.select`
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  margin-top: 10px;
 `;
 
 const Filter: React.FC<FilterProps> = ({ onFilter }) => {
