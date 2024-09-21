@@ -1,19 +1,8 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { FilterProps } from '../types';
+import FilterSelect from './styles/select/select';
+import Container from './styles/container/container';
 
-const FilterContainer = styled.div`
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-`;
-
-const FilterSelect = styled.select`
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-top: 10px;
-`;
 
 const Filter: React.FC<FilterProps> = ({ onFilter }) => {
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -25,7 +14,7 @@ const Filter: React.FC<FilterProps> = ({ onFilter }) => {
   };
 
   return (
-    <FilterContainer>
+    <Container>
       <label htmlFor="category">Filter by category: </label>
       <FilterSelect id="category" value={selectedCategory} onChange={handleFilterChange}>
         <option value="">All</option>
@@ -34,7 +23,7 @@ const Filter: React.FC<FilterProps> = ({ onFilter }) => {
         <option value="brochure">Brochure</option>
         <option value="ebook">eBook</option>
       </FilterSelect>
-    </FilterContainer>
+    </Container>
   );
 };
 

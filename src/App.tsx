@@ -2,19 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PublicationView from './views/PublicationView';
 import PublicationDetail from './components/PublicationDetail';
-import styled from 'styled-components';
+import Container from './components/styles/container/container';
 
-const AppContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-`;
 
 const App: React.FC = () => {
   return (
     <Router>
-      <AppContainer>
+      <Container>
         <Routes>
           {/* Route for listing publications */}
           <Route path="/" element={<PublicationView />} />
@@ -25,7 +19,7 @@ const App: React.FC = () => {
           {/* Fallback Route, just in case there is an issue */}
           <Route path="*" element={<div>Page not found</div>} />
         </Routes>
-      </AppContainer>
+      </Container>
     </Router>
   );
 };

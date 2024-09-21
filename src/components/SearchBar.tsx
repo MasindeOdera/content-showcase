@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { SearchBarProps } from '../types';
-
-const SearchContainer = styled.div`
-  margin-bottom: 20px;
-  box-sizing: border-box;
-  flex: 1 1 0%;
-  display: flex;
-`;
+import Container from './styles/container/container';
 
 const SearchInput = styled.input`
   padding: 10px;
@@ -26,14 +20,14 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   };
 
   return (
-    <SearchContainer>
+    <Container>
       <SearchInput
         type="text"
         placeholder="Search"
         value={searchTerm}
         onChange={handleSearchChange}
       />
-    </SearchContainer>
+    </Container>
   );
 };
 

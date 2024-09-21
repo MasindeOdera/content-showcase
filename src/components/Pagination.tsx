@@ -1,16 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { PaginationProps } from '../types/pagination';
-
-const PaginationContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-`;
+import Container from './styles/container/container';
 
 const PageButton = styled.button<{ $active: boolean }>`
   margin: 0 5px;
   padding: 10px 15px;
+  width: fit-content;
   background-color: ${({ $active }) => ($active ? '#007bff' : '#f0f0f0')};
   color: ${({ $active }) => ($active ? '#fff' : '#000')};
   border: none;
@@ -27,7 +23,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <PaginationContainer>
+    <Container>
       {pageNumbers.map((page) => (
         <PageButton
           key={page}
@@ -37,7 +33,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
           {page}
         </PageButton>
       ))}
-    </PaginationContainer>
+    </Container>
   );
 };
 
