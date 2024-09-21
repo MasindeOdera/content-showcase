@@ -15,7 +15,6 @@ const App: React.FC = () => {
   return (
     <Router>
       <AppContainer>
-        <h1>Content Showcase</h1>
         <Routes>
           {/* Route for listing publications */}
           <Route path="/" element={<PublicationView />} />

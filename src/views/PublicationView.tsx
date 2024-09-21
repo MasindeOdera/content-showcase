@@ -58,7 +58,7 @@ const PublicationView: React.FC = () => {
 
   return (
     <div>
-      <h1>Publications</h1>
+      <h1>Content Showcase</h1>
       <SearchBar onSearch={handleSearch} />
       <Filter onFilter={handleFilter} />
       <PublicationList publications={publications} />
