@@ -1,9 +1,3 @@
-import styled from "styled-components";
-
-const Container = styled.div`
-  margin: 10px auto;
-  display: flex;
-  flex-direction: column;
-`;
+import { Container } from "./Container.styles";
 
 export default Container;
