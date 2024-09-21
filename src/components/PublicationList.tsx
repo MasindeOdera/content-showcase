@@ -1,36 +1,5 @@
 import React from 'react';
-
-interface Publication {
-    id: string;
-    name: string;
-    category: string;
-    description: string;
-    created_on: string;
-    modified_on: string;
-    _computed: {
-        editions_count: number;
-        editions_published_count: number;
-        background_color: string;
-    };
-    _links: {
-        published: {
-        href: string;
-        };
-        self: {
-        href: string;
-        };
-    };
-    _embedded: {
-        account: {
-        id: number;
-        _links: {
-            self: {
-            href: string;
-            };
-        };
-        };
-    };
-}
+import { Publication } from '../types/publication';
 
 interface PublicationListProps {
     publications: Publication[];

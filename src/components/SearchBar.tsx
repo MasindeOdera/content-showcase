@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
-interface SearchBarProps {
-  onSearch: (query: string) => void;
-}
+import { SearchBarProps } from '../types';
 
 const SearchContainer = styled.div`
   margin-bottom: 20px;

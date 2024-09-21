@@ -1,11 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
-interface PaginationProps {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (page: number) => void;
-}
+import { PaginationProps } from '../types/pagination';
 
 const PaginationContainer = styled.div`
   display: flex;

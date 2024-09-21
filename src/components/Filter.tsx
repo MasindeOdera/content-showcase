@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
-interface FilterProps {
-  onFilter: (category: string) => void;
-}
+import { FilterProps } from '../types';
 
 const FilterContainer = styled.div`
   margin-bottom: 20px;
