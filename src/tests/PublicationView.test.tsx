@@ -9,24 +9,6 @@ jest.mock('../services/apiService', () => ({
   fetchProjects: jest.fn(),
 }));
 
-// test('fetchProjects is called with correct parameters', async () => {
-//   // Mocking the API response
-//   (fetchProjects as jest.Mock).mockResolvedValueOnce({ items: [], totalPages: 1 });
-
-//   // Rendering the component
-//   render(<PublicationView />);
-
-//   // Wait for fetchProjects to be called and log the calls
-//   await waitFor(() => {
-//     console.log((fetchProjects as jest.Mock).mock.calls); // Log the mock calls for debugging
-//   });
-
-//   // Wait for the fetchProjects to be called
-//   await waitFor(() => {
-//     expect(fetchProjects).toHaveBeenCalledWith(1, { search: '', category: '' });
-//   });
-// });
-
 test('fetchProjects returns data with search query', async () => {
   // Mocking the API response with search query
   (fetchProjects as jest.Mock).mockResolvedValueOnce({
@@ -47,22 +29,18 @@ test('fetchProjects returns data with search query', async () => {
   });
 
   // Render the component
-  const { getByPlaceholderText } = render(<PublicationView />);
+  render(<PublicationView />);
 
   // Simulate user typing in the search input
-  const searchInput = getByPlaceholderText('Search');
+  const searchInput = screen.getByPlaceholderText('Search');
   fireEvent.change(searchInput, { target: { value: 'Test' } });
 
-  // Wait for fetchProjects to be called with the search query
+  // Wait for fetchProjects to be called with the correct parameters
   await waitFor(() => {
     expect(fetchProjects).toHaveBeenCalledWith(1, { search: 'Test', category: '' });
   });
 
-  // Log the result to see what fetchProjects returns (for debugging purposes)
-  console.log((fetchProjects as jest.Mock).mock.calls);
-
-  // Optionally: Verify the result is rendered correctly
-  await waitFor(() => {
-    expect(screen.getByText('Test Publication 1')).toBeInTheDocument();
-  });
+  // Wait for the publication to appear in the DOM (using regex or custom matcher)
+  const publicationElement = await screen.findByText(/Test Publication 1/i);
+  expect(publicationElement).toBeInTheDocument();
 });

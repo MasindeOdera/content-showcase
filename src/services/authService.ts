@@ -3,8 +3,8 @@ import axios from 'axios';
 export async function getBearerToken() {
   const response = await axios.post('https://api.foleon.com/oauth', {
     grant_type: 'client_credentials',
-    client_id: 'eVOfzXYAzz',
-    client_secret: 'f467185f0e8ed5c8125929c1d5fbedc15bd9f60b413f7d8629fad65b3ffa7ad5',
+    client_id: 'b4xfRRj0xL',
+    client_secret: 'cb9c3aa77a15392f3bb4455d0194b07dc2953694485ed5ba844743323578ffeb',
   });
   return response.data.access_token;
-}
+};
