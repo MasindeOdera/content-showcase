@@ -3,15 +3,6 @@ import { getBearerToken } from './authService';
 
 export const fetchProjects = async (page: number, query: { search: string; category: string }) => {
   const token = await getBearerToken();
-  // const response = await axios.get(
-  //   `https://api.foleon.com/v2/magazine/title?${new URLSearchParams({
-  //     page: page.toString(),
-  //     limit: '20',
-  //     search: query.search,
-  //     category: query.category,
-  //   })}`,
-  //   { headers: { Authorization: `Bearer ${token}` } }
-  // );
   const response = await axios.get(
     `https://api.foleon.com/v2/magazine/title?${new URLSearchParams({
       page: page.toString(),
