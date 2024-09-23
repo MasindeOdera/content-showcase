@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import PublicationList from '../components/PublicationList';
 import '@testing-library/jest-dom';
