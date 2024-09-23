@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Container from '../components/styles/container/Container';
+import Container from '../components/styles/container/container';
 
 describe('Container Styled Component', () => {
   test('applies correct CSS properties', () => {

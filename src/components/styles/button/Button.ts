@@ -1,4 +1,4 @@
-import { Button, PageButton } from "./Button.styles";
+import { Button, PageButton } from "./button.styles";
 
 export default Button;
 export { PageButton };

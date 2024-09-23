@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FilterProps } from '../types';
-import FilterSelect from './styles/select/Select';
-import Container from './styles/container/Container';
+import FilterSelect from './styles/select/select';
+import Container from './styles/container/container';
 
 
 const Filter: React.FC<FilterProps> = ({ onFilter }) => {

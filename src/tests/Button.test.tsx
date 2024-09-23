@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { PageButton } from '../components/styles/button/Button';
+import { PageButton } from '../components/styles/button/button';
 import '@testing-library/jest-dom';
 
 // Skipping these tests for now, they are flaky :(

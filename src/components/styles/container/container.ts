@@ -1,3 +1,3 @@
-import { Container } from "./Container.styles";
+import { Container } from "./container.styles";
 
 export default Container;

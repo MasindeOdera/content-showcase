@@ -1,3 +1,3 @@
-import { Input } from "./Input.styles";
+import { Input } from "./input.styles";
 
 export default Input;

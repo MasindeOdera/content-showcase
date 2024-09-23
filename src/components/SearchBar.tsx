@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SearchBarProps } from '../types';
-import Container from './styles/container/Container';
-import Input from './styles/input/Input';
+import Container from './styles/container/container';
+import Input from './styles/input/input';
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');

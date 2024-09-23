@@ -1,7 +1,7 @@
 import React from 'react';
 import { PaginationProps } from '../types/pagination';
-import Container from './styles/container/Container';
-import { PageButton } from './styles/button/Button';
+import Container from './styles/container/container';
+import { PageButton } from './styles/button/button';
 
 
 const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageChange }) => {

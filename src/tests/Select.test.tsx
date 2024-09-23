@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import FilterSelect from '../components/styles/select/Select';
+import FilterSelect from '../components/styles/select/select';
 
 describe('FilterSelect Styled Component', () => {
   test('renders with correct styles', () => {
