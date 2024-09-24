@@ -21,7 +21,7 @@ const PublicationView: React.FC = () => {
 
   return (
     <div>
-      <h1>Foleon Workspace</h1>
+      <h1>Foleon Publications</h1>
       <SearchBar onSearch={handleSearch} />
       <Filter onFilter={handleFilter} />
       <PublicationList publications={publications} />
