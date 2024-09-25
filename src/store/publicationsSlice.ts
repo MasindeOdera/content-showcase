@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { fetchProjects } from '../services/apiService';
+// import { fetchFilteredProjects } from '../services/apiService';
 import { Publication } from '../types';
 
 interface PublicationsState {
@@ -49,6 +50,16 @@ export const fetchPublications = createAsyncThunk(
   }
 );
 
+// Async thunk for fetching filtered projects
+export const fetchFilteredProjects = createAsyncThunk(
+  'publications/fetchFilteredProjects',
+  async ({ page, query }: { page: number; query: { search: string; category: string } }) => {
+    const response = await fetchProjects(page, query);
+    return response;
+  }
+);
+
+
 const publicationsSlice = createSlice({
   name: 'publications',
   initialState,
@@ -74,6 +85,17 @@ const publicationsSlice = createSlice({
         state.totalPages = action.payload.totalPages;
       })
       .addCase(fetchPublications.rejected, (state) => {
+        state.loading = false;
+      })
+      .addCase(fetchFilteredProjects.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchFilteredProjects.fulfilled, (state, action: PayloadAction<{ items: Publication[]; totalPages: number }>) => {
+        state.loading = false;
+        state.items = action.payload.items;
+        state.totalPages = action.payload.totalPages;
+      })
+      .addCase(fetchFilteredProjects.rejected, (state) => {
         state.loading = false;
       });
   },

@@ -1,14 +1,28 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store/store';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState, AppDispatch } from '../store/store';
 import { ResultsContainer } from './styles/container/container';
+import { fetchFilteredProjects } from '../store/publicationsSlice';
 import Loader from './Loader';
 import { useDelayedLoading } from '../hooks/useDelayedLoading';
 
 const PublicationList: React.FC = () => {
+  const dispatch = useDispatch<AppDispatch>();
   // Fetch publications and loading state from the Redux store
   const publications = useSelector((state: RootState) => state.publications.items);
   const loading = useSelector((state: RootState) => state.publications.loading);
+  const searchQuery = useSelector((state: RootState) => state.publications.search);
+  const filterCategory = useSelector((state: RootState) => state.publications.category);
+  const currentPage = useSelector((state: RootState) => state.publications.currentPage);
+
+  // Inside useEffect of PublicationList.tsx
+  useEffect(() => {
+    dispatch(fetchFilteredProjects({
+      page: currentPage,
+      query: { search: searchQuery, category: filterCategory },
+    }));
+  }, [searchQuery, filterCategory, currentPage, dispatch]);
+
 
   //Use the hook with 2 second delay
   const loadingWithDelay = useDelayedLoading(loading, 2000);
