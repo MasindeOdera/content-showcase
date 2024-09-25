@@ -18,6 +18,7 @@ export const fetchProjects = async (page: number, query: { search: string; categ
   console.log({data});
   console.log({publications});
   console.log({response});
+  console.log("fetchProjects");
 
   return {
     data: data,
@@ -66,12 +67,12 @@ export const fetchFilteredProjects = async (
 
   // Add search filter (if search query exists)
   if (query.search) {
-    filters.push(`filter[0][field]=title&filter[0][type]=eq&filter[0][value]=${query.search}`);
+    filters.push(`filter[0][field]=name&filter[0][type]=eq&filter[0][value]=${query.search}`);
   }
 
   // Add category filter (if category filter exists)
   if (query.category) {
-    filters.push(`filter[1][field]=category&filter[1][type]=eq&filter[1][value]=${query.category}`);
+    filters.push(`filter[1][field]=created_on&filter[1][type]=eq&filter[1][value]=${query.category}`);
   }
 
   // Combine all filters into a query string
@@ -85,6 +86,10 @@ export const fetchFilteredProjects = async (
 
   // Extract publications from the response
   const publications = response.data._embedded?.title || [];
+  console.log({query});
+  console.log({publications});
+  console.log({response});
+  console.log("fetchFilteredProjects");
   return {
     items: publications,
     totalPages: response.data.page_count,

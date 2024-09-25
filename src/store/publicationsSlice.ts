@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { fetchProjects } from '../services/apiService';
-// import { fetchFilteredProjects } from '../services/apiService';
+import { fetchFilteredProjects as filterCategory } from '../services/apiService';
 import { Publication } from '../types';
 
 interface PublicationsState {
@@ -54,7 +54,7 @@ export const fetchPublications = createAsyncThunk(
 export const fetchFilteredProjects = createAsyncThunk(
   'publications/fetchFilteredProjects',
   async ({ page, query }: { page: number; query: { search: string; category: string } }) => {
-    const response = await fetchProjects(page, query);
+    const response = await filterCategory(page, query);
     return response;
   }
 );
