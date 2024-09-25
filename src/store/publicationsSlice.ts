@@ -9,6 +9,7 @@ interface PublicationsState {
   currentPage: number;
   totalPages: number;
   loading: boolean;
+  filterOptions: { value: string; label: string }[];
 }
 
 const initialState: PublicationsState = {
@@ -18,6 +19,26 @@ const initialState: PublicationsState = {
   currentPage: 1,
   totalPages: 1,
   loading: false,
+  filterOptions: [
+    { value: '', label: 'All' },
+    { value: 'annual-Report', label: 'Annual Report' },
+    { value: 'branded-content', label: 'Branded Content' },
+    { value: 'brochure', label: 'Brochure' },
+    { value: 'case-study', label: 'Case Study' },
+    { value: 'customer-magazine', label: 'Customer Magazine' },
+    { value: 'ebook', label: 'eBook' },
+    { value: 'event-magazine', label: 'Event Magazine' },
+    { value: 'manual', label: 'Manual' },
+    { value: 'member-magazine', label: 'Member Magazine' },
+    { value: 'newsletter', label: 'Newsletter' },
+    { value: 'pitch-deck', label: 'Pitch Deck' },
+    { value: 'presentation', label: 'Presentation' },
+    { value: 'proposal', label: 'Proposal' },
+    { value: 'product-catalog', label: 'Product Catalog' },
+    { value: 'report', label: 'Report' },
+    { value: 'staff-magazine', label: 'Staff Magazine' },
+    { value: 'other', label: 'Other' },
+  ],
 };
 
 export const fetchPublications = createAsyncThunk(

@@ -11,6 +11,7 @@ const Filter: React.FC = () => {
 
   // Get the current category from Redux store
   const selectedCategory = useSelector((state: RootState) => state.publications.category);
+  const filterOptions = useSelector((state: RootState) => state.publications.filterOptions);
 
   const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     // Update the Redux store with new filter category.
@@ -21,24 +22,11 @@ const Filter: React.FC = () => {
     <Container>
       <label htmlFor="category">Filter by category: </label>
       <FilterSelect id="category" value={selectedCategory} onChange={handleFilterChange}>
-        <option value="">All</option>
-        <option value="annual-Report">Annual Report</option>
-        <option value="branded-content">Branded Content</option>
-        <option value="brochure">Brochure</option>
-        <option value="case-study">Case Study</option>
-        <option value="customer-magazine">Customer Magazine</option>
-        <option value="ebook">eBook</option>
-        <option value="event-magazine">Event Magazine</option>
-        <option value="manual">Manual</option>
-        <option value="member-magazine">Member Magazine</option>
-        <option value="newsletter">Newsletter</option>
-        <option value="pitch-deck">Pitch Deck</option>
-        <option value="presentation">Presentaion</option>
-        <option value="proposal">Proposal</option>
-        <option value="product-catalog">Product Catalog</option>
-        <option value="report">Report</option>
-        <option value="staff-magazine">Staff Magazine</option>
-        <option value="other">Other</option>
+        {filterOptions.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
       </FilterSelect>
     </Container>
   );
