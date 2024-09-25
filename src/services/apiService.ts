@@ -15,6 +15,9 @@ export const fetchProjects = async (page: number, query: { search: string; categ
   // Extract publications from the response (in _embedded.title)
   const publications = response.data._embedded?.title || [];
   const data = response.data;
+  console.log({data});
+  console.log({publications});
+  console.log({response});
 
   return {
     data: data,
