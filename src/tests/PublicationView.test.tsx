@@ -1,6 +1,8 @@
 import { render, waitFor, fireEvent, screen } from '@testing-library/react';
 import PublicationView from '../views/PublicationView';
 import { fetchProjects } from '../services/apiService';
+import { Provider } from 'react-redux';
+import { store } from '../store/store';
 import '@testing-library/jest-dom';
 
 // Mock the fetchProjects service
@@ -9,7 +11,7 @@ jest.mock('../services/apiService', () => ({
 }));
 
 describe('PublicationView view', () => {
-  test('fetchProjects returns data with search query', async () => {
+  test('fetchProjects returns data with search query and renders components', async () => {
     // Mocking the API response with search query
     (fetchProjects as jest.Mock).mockResolvedValueOnce({
       items: [
@@ -27,22 +29,29 @@ describe('PublicationView view', () => {
       ],
       totalPages: 1,
     });
-  
-    // Render the component
-    render(<PublicationView />);
-  
+
+    // Render the component wrapped with Provider
+    render(
+      <Provider store={store}>
+        <PublicationView />
+      </Provider>
+    );
+
     // Simulate user typing in the search input
     const searchInput = screen.getByPlaceholderText('Search');
     fireEvent.change(searchInput, { target: { value: 'Test' } });
-  
+
     // Wait for fetchProjects to be called with the correct parameters
     await waitFor(() => {
       expect(fetchProjects).toHaveBeenCalledWith(1, { search: 'Test', category: '' });
     });
-  
-    // Wait for the publication to appear in the DOM (using regex or custom matcher)
-    const publicationElement = await screen.findByText(/Test Publication 1/i);
-    expect(publicationElement).toBeInTheDocument();
-  });    
-});
 
+    // Check that components are rendered
+    expect(screen.getByPlaceholderText('Search')).toBeInTheDocument(); // Check for SearchBar component
+    expect(screen.getByText(/Filter by Category/i)).toBeInTheDocument(); // Check for Filter component
+    
+    // Wait for the publication to appear in the DOM
+    const publicationElement = await screen.findByText(/Test Publication 1/i);
+    expect(publicationElement).toBeInTheDocument(); // Check for PublicationList
+  });
+});

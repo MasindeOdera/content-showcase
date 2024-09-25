@@ -1,12 +1,23 @@
 import React from 'react';
-import { Publication } from '../types/publication';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/store';
 import { ResultsContainer } from './styles/container/container';
+import Loader from './Loader';
+import { useDelayedLoading } from '../hooks/useDelayedLoading';
 
-interface PublicationListProps {
-    publications: Publication[];
-}
+const PublicationList: React.FC = () => {
+  // Fetch publications and loading state from the Redux store
+  const publications = useSelector((state: RootState) => state.publications.items);
+  const loading = useSelector((state: RootState) => state.publications.loading);
 
-const PublicationList: React.FC<PublicationListProps> = ({ publications }) => {
+  //Use the hook with 2 second delay
+  const loadingWithDelay = useDelayedLoading(loading, 2000);
+
+  // Show loader during the delay.
+  if (loadingWithDelay) {
+    return (<ResultsContainer><Loader /></ResultsContainer>);
+  }
+
   return (
     <ResultsContainer>
       <ul>

@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
-import { FilterProps } from '../types';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../store/store';
+import { setFilter } from '../store/publicationsSlice';
 import FilterSelect from './styles/select/select';
 import Container from './styles/container/container';
 
 
-const Filter: React.FC<FilterProps> = ({ onFilter }) => {
-  const [selectedCategory, setSelectedCategory] = useState('');
+const Filter: React.FC = () => {
+  const dispatch = useDispatch();
+
+  // Get the current category from Redux store
+  const selectedCategory = useSelector((state: RootState) => state.publications.category);
 
   const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const category = event.target.value;
-    setSelectedCategory(category);
-    onFilter(category);
+    // Update the Redux store with new filter category.
+    dispatch(setFilter(event.target.value));
   };
 
   return (

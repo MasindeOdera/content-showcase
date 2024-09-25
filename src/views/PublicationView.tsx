@@ -1,31 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
+// import { useDispatch } from 'react-redux';
+// import { AppDispatch } from '../store/store';
 import Pagination from '../components/Pagination';
 import SearchBar from '../components/SearchBar';
 import Filter from '../components/Filter';
 import PublicationList from '../components/PublicationList';
-import { usePublications } from '../hooks/usePublications';
+// import { fetchPublications } from '../store/publicationsSlice';
 
 const PublicationView: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState('');  // Initial empty search query
-  const [filterCategory, setFilterCategory] = useState('');
+  // const dispatch = useDispatch<AppDispatch>();
 
-  const { publications, totalPages } = usePublications(currentPage, {
-    search: searchQuery,
-    category: filterCategory,
-  });
-
-  const handlePageChange = (page: number) => setCurrentPage(page);
-  const handleSearch = (query: string) => setSearchQuery(query);  // Set actual search query
-  const handleFilter = (category: string) => setFilterCategory(category);
+  // Fetch the initial set of publications when the component mounts
+  // useEffect(() => {
+  //   dispatch(fetchPublications({ page: 1, query: { search: '', category: '' } }));
+  // }, [dispatch]);
 
   return (
     <div>
       <h1>Foleon Publications</h1>
-      <SearchBar onSearch={handleSearch} />
-      <Filter onFilter={handleFilter} />
-      <PublicationList publications={publications} />
-      <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
+      <SearchBar />
+      <Filter />
+      <PublicationList />
+      <Pagination />
     </div>
   );
 };
