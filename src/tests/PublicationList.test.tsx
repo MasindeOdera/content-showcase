@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react';
-import PublicationList from '../components/PublicationList';
+import PublicationList from '../components/PublicationList.tsx';
 import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
-import { store } from '../store/store';
+import { store } from '../store/store.ts';
 
 describe('PublicataionList component', () => {
   test('renders list of publications correctly', () => {

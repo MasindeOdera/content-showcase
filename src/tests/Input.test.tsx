@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Input from '../components/styles/input/input';
+import Input from '../components/styles/input/input.ts';
 
 describe('Input Styled Component', () => {
   test('renders with correct styles', () => {

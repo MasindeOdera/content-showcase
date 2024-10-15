@@ -1,8 +1,8 @@
 import { render, waitFor, fireEvent, screen } from '@testing-library/react';
-import PublicationView from '../views/PublicationView';
-import { fetchProjects } from '../services/apiService';
+import PublicationView from '../views/PublicationView.tsx';
+import { fetchProjects } from '../services/apiService.ts';
 import { Provider } from 'react-redux';
-import { store } from '../store/store';
+import { store } from '../store/store.ts';
 import '@testing-library/jest-dom';
 
 // Mock the fetchProjects service

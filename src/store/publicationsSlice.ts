@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { fetchProjects } from '../services/apiService';
-import { fetchFilteredProjects as filterCategory } from '../services/apiService';
-import { Publication } from '../types';
+import { fetchProjects } from '../services/apiService.ts';
+import { fetchFilteredProjects as filterCategory } from '../services/apiService.ts';
+import { Publication } from '../types/index.ts';
 
 interface PublicationsState {
   items: Publication[];

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { PageButton } from '../components/styles/button/button';
+import { PageButton } from '../components/styles/button/button.ts';
 import '@testing-library/jest-dom';
 
 describe.skip('Test Button Styled-Component', () => {

@@ -1,8 +1,8 @@
 import React from 'react';
-import Pagination from '../components/Pagination';
-import SearchBar from '../components/SearchBar';
-import Filter from '../components/Filter';
-import PublicationList from '../components/PublicationList';
+import Pagination from '../components/Pagination.tsx';
+import SearchBar from '../components/SearchBar.tsx';
+import Filter from '../components/Filter.tsx';
+import PublicationList from '../components/PublicationList.tsx';
 
 const PublicationView: React.FC = () => {
 

@@ -1,3 +1,3 @@
-import { FilterSelect } from "./select.styles";
+import { FilterSelect } from "./select.styles.ts";
 
 export default FilterSelect;

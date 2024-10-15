@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getBearerToken } from './authService';
+import { getBearerToken } from './authService.ts';
 
 export async function filterProjectsByCategory(category: string, page = 1, limit = 20) {
   const token = await getBearerToken();

@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../store/store';
-import { setCurrentPage } from '../store/publicationsSlice';
-// import { PaginationProps } from '../types/pagination';
-import Container from './styles/container/container';
-import { PageButton } from './styles/button/button';
+import { RootState } from '../store/store.ts';
+import { setCurrentPage } from '../store/publicationsSlice.ts';
+// import { PaginationProps } from '../types/pagination.ts';
+import Container from './styles/container/container.ts';
+import { PageButton } from './styles/button/button.ts';
 
 
 const Pagination: React.FC = () => {

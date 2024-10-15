@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState, AppDispatch } from '../store/store';
-import { ResultsContainer } from './styles/container/container';
-import { fetchFilteredProjects } from '../store/publicationsSlice';
-import Loader from './Loader';
-import { useDelayedLoading } from '../hooks/useDelayedLoading';
+import { RootState, AppDispatch } from '../store/store.ts';
+import { ResultsContainer } from './styles/container/container.ts';
+import { fetchFilteredProjects } from '../store/publicationsSlice.ts';
+import Loader from './Loader.tsx';
+import { useDelayedLoading } from '../hooks/useDelayedLoading.ts';
 
 const PublicationList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();

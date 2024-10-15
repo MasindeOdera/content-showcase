@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchPublicationDetail } from '../services/apiService';
-import { Publication } from '../types';
+import { fetchPublicationDetail } from '../services/apiService.ts';
+import { Publication } from '../types/index.ts';
   
 
 const PublicationDetail: React.FC = () => {

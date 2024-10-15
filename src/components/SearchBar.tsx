@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState, AppDispatch } from '../store/store';
-import { setSearchQuery, fetchPublications } from '../store/publicationsSlice';
-import Container from './styles/container/container';
-import Input from './styles/input/input';
-import { useDebouncedValue } from '../hooks/useDebouncedValue';
+import { RootState, AppDispatch } from '../store/store.ts';
+import { setSearchQuery, fetchPublications } from '../store/publicationsSlice.ts';
+import Container from './styles/container/container.ts';
+import Input from './styles/input/input.ts';
+import { useDebouncedValue } from '../hooks/useDebouncedValue.ts';
 
 const SearchBar: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();

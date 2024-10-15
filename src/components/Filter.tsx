@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState, AppDispatch } from '../store/store';
-import { setFilter } from '../store/publicationsSlice';
-import { fetchFilteredProjects } from '../store/publicationsSlice';
-import FilterSelect from './styles/select/select';
-import Container from './styles/container/container';
+import { RootState, AppDispatch } from '../store/store.ts';
+import { setFilter } from '../store/publicationsSlice.ts';
+import { fetchFilteredProjects } from '../store/publicationsSlice.ts';
+import FilterSelect from './styles/select/select.ts';
+import Container from './styles/container/container.ts';
 
 
 const Filter: React.FC = () => {

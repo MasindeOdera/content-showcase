@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import publicationsReducer from './publicationsSlice';
+import publicationsReducer from './publicationsSlice.ts';
 
 export const store = configureStore({
   reducer: {
