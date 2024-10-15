@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 
-// Includes value to debounce and debounce delay in milliseconds.
 export const useDebouncedValue = (value: string, delay: number) => {
     const [debouncedValue, setDebouncedValue] = useState(value);
 

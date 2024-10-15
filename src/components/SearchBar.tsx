@@ -26,7 +26,6 @@ const SearchBar: React.FC = () => {
   }, [debouncedSearchQuery, searchQuery, dispatch, currentPage, filterCategory]);
  
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // Update the input value
     setInputValue(event.target.value);
   };
 

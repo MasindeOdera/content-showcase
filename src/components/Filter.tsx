@@ -18,7 +18,7 @@ const Filter: React.FC = () => {
 
   const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     // Update the Redux store with new filter category.
-    // dispatch(setFilter(event.target.value));
+  
     const newCategory = event.target.value;
 
     // Update the Redux store with the new filter

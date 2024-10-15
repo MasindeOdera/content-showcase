@@ -9,9 +9,9 @@ export const useDelayedLoading = (loading: boolean, delay: number = 2000) => {
     } else {
       const timer = setTimeout(() => {
         setLoadingWithDelay(false);
-      }, delay); // Use the passed delay value
+      }, delay);
 
-      return () => clearTimeout(timer); // Cleanup the timer on unmount or when loading changes
+      return () => clearTimeout(timer);
     }
   }, [loading, delay]);
 

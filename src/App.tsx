@@ -10,13 +10,10 @@ const App: React.FC = () => {
     <Router>
       <Container>
         <Routes>
-          {/* Route for listing publications */}
           <Route path="/content-showcase/" element={<PublicationView />} />
           
-          {/* Route for viewing publication details */}
           <Route path="/publications/:id" element={<PublicationDetail />} />
 
-          {/* Fallback Route, just in case there is an issue */}
           <Route path="*" element={<div>Page not found</div>} />
         </Routes>
       </Container>

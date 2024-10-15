@@ -3,7 +3,6 @@ import userEvent from '@testing-library/user-event';
 import { PageButton } from '../components/styles/button/button';
 import '@testing-library/jest-dom';
 
-// Skipping these tests for now, they are flaky :(
 describe.skip('Test Button Styled-Component', () => {
     // Test default inactive state styles
     test('renders with default inactive styles', () => {

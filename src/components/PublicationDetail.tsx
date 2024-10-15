@@ -5,7 +5,7 @@ import { Publication } from '../types';
   
 
 const PublicationDetail: React.FC = () => {
-  const { id } = useParams<{ id: string }>();  // Infer id from URL params
+  const { id } = useParams<{ id: string }>();
   const [publication, setPublication] = useState<Publication | null>(null);
 
   useEffect(() => {

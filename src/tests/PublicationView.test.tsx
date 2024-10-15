@@ -49,17 +49,5 @@ describe('PublicationView view', () => {
     // Check that components are rendered
     expect(screen.getByPlaceholderText('Type to start search...')).toBeInTheDocument(); // Check for SearchBar component
     expect(screen.getByText(/Filter by Category/i)).toBeInTheDocument(); // Check for Filter component
-    
-    // Custom function to find the publication text, considering nested elements
-    // const publicationElement = await screen.findByText((_, element) => {
-    //   // Handle the case where element is null
-    //   if (!element) return false;
-    //   const hasText = (node: HTMLElement) => node.textContent === 'Test Publication 1';
-    //   const elementHasText = hasText(element as HTMLElement);
-    //   const childrenDontHaveText = Array.from(element.children).every((child) => !hasText(child as HTMLElement));
-    //   return elementHasText && childrenDontHaveText;
-    // });
-
-    // expect(publicationElement).toBeInTheDocument();
   });
 });

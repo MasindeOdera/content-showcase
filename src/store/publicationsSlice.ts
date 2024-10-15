@@ -50,7 +50,6 @@ export const fetchPublications = createAsyncThunk(
   }
 );
 
-// Async thunk for fetching filtered projects
 export const fetchFilteredProjects = createAsyncThunk(
   'publications/fetchFilteredProjects',
   async ({ page, query }: { page: number; query: { search: string; category: string } }) => {
