@@ -11,7 +11,7 @@ const App: React.FC = () => {
       <Container>
         <Routes>
 
-          <Route path="/content-showcase/" element={<PublicationView />} />
+          <Route path="/" element={<PublicationView />} />
           
           <Route path="/publications/:id" element={<PublicationDetail />} />
 
