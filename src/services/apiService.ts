@@ -18,10 +18,7 @@ export const fetchProjects = async (page: number, query: { search: string; categ
 
   const publications = response.data._embedded?.title || [];
   const data = response.data;
-  console.log({data});
-  console.log({publications});
-  console.log({response});
-  console.log("fetchProjects");
+  console.log('fetchProjects: ', {response});
 
   return {
     data: data,
@@ -70,10 +67,7 @@ export const fetchFilteredProjects = async (
 
   // Extract publications from the response
   const publications = response.data._embedded?.title || [];
-  console.log({query});
-  console.log({publications});
-  console.log({response});
-  console.log("fetchFilteredProjects");
+  console.log('fetchPublicationDetail: ', {response});
   return {
     items: publications,
     totalPages: response.data.page_count,
