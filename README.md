@@ -31,10 +31,9 @@ Ensure you have the following installed on your system:
    cd content-showcase-app
 
 2. **Modify .env.example**
-   ```bash
-   Open the .env.example file located in the root of the project.
-   Replace YOUR-CLIENT-ID and YOUR-CLIENT-SECRET with your actual API credentials.
-   Save the file as .env (removing the .example extension).
+   - Open the .env.example file located in the root of the project.
+   - Replace YOUR-CLIENT-ID and YOUR-CLIENT-SECRET with your actual API credentials.
+   - Save the file as .env (removing the .example extension).
 
 
 3. **Install dependencies**
