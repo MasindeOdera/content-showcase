@@ -30,14 +30,21 @@ Ensure you have the following installed on your system:
    git clone https://github.com/MasindeOdera/content-showcase.git
    cd content-showcase-app
 
-2. **Install dependencies**
+2. **Modify .env.example**
+   ```bash
+   Open the .env.example file located in the root of the project.
+   Replace YOUR-CLIENT-ID and YOUR-CLIENT-SECRET with your actual API credentials.
+   Save the file as .env (removing the .example extension).
+
+
+3. **Install dependencies**
    ```bash
    npm install
 
-3. **Run the Application**
+4. **Run the Application**
    ```bash
    npm run dev
 
-4. **Run Unit Tests**
+5. **Run Unit Tests**
    ```bash
    npm run test
