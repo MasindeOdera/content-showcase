@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { fetchProjects } from '../services/apiService.ts';
 import { fetchFilteredProjects as filterCategory } from '../services/apiService.ts';
+import { fetchProjectsByCategory } from '../services/apiService.ts';
 import { Publication } from '../types/index.ts';
 
 interface PublicationsState {
@@ -22,23 +23,24 @@ const initialState: PublicationsState = {
   loading: false,
   filterOptions: [
     { value: '', label: 'All' },
-    { value: 'annual-Report', label: 'Annual Report' },
-    { value: 'branded-content', label: 'Branded Content' },
+    { value: 'annual_report', label: 'Annual Report' },
+    { value: 'branded_content', label: 'Branded Content' },
     { value: 'brochure', label: 'Brochure' },
-    { value: 'case-study', label: 'Case Study' },
-    { value: 'customer-magazine', label: 'Customer Magazine' },
+    { value: 'case_study', label: 'Case Study' },
+    { value: 'customer_magazine', label: 'Customer Magazine' },
     { value: 'ebook', label: 'eBook' },
-    { value: 'event-magazine', label: 'Event Magazine' },
+    { value: 'event_magazine', label: 'Event Magazine' },
     { value: 'manual', label: 'Manual' },
-    { value: 'member-magazine', label: 'Member Magazine' },
+    { value: 'member_magazine', label: 'Member Magazine' },
     { value: 'newsletter', label: 'Newsletter' },
-    { value: 'pitch-deck', label: 'Pitch Deck' },
+    { value: 'pitch_deck', label: 'Pitch Deck' },
     { value: 'presentation', label: 'Presentation' },
     { value: 'proposal', label: 'Proposal' },
-    { value: 'product-catalog', label: 'Product Catalog' },
+    { value: 'productt_catalog', label: 'Product Catalog' },
     { value: 'report', label: 'Report' },
-    { value: 'staff-magazine', label: 'Staff Magazine' },
+    { value: 'staff_magazine', label: 'Staff Magazine' },
     { value: 'other', label: 'Other' },
+    { value: 'whitepaper', label: 'Whitepaper' },
   ],
 };
 
@@ -55,6 +57,14 @@ export const fetchFilteredProjects = createAsyncThunk(
   async ({ page, query }: { page: number; query: { search: string; category: string } }) => {
     const response = await filterCategory(page, query);
     return response;
+  }
+);
+
+export const fetchProjectsByCategoryThunk = createAsyncThunk(
+  'publications/fetchProjectsByCategory',
+  async ({ page, newCategory }: { page: number; newCategory: string }) => {
+    const response = await fetchProjectsByCategory(page, 20, newCategory);
+    return { items: response.items as Publication[], totalPages: response.totalPages };
   }
 );
 
@@ -95,6 +105,18 @@ const publicationsSlice = createSlice({
         state.totalPages = action.payload.totalPages;
       })
       .addCase(fetchFilteredProjects.rejected, (state) => {
+        state.loading = false;
+      })
+      // New reducers for fetchProjectsByCategory
+      .addCase(fetchProjectsByCategoryThunk.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchProjectsByCategoryThunk.fulfilled, (state, action: PayloadAction<{ items: Publication[]; totalPages: number }>) => {
+        state.loading = false;
+        state.items = action.payload.items;
+        state.totalPages = action.payload.totalPages;
+      })
+      .addCase(fetchProjectsByCategoryThunk.rejected, (state) => {
         state.loading = false;
       });
   },

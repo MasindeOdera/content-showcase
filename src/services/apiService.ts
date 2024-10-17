@@ -73,3 +73,47 @@ export const fetchFilteredProjects = async (
     totalPages: response.data.page_count,
   };
 };
+
+export const fetchProjectsByCategory = async (page = 1, limit = 20, newCategory: string) => {
+  const token = await getBearerToken();
+
+  // Only query for pagination
+  const queryParams = new URLSearchParams();
+  queryParams.append('page', page.toString());
+  queryParams.append('limit', limit.toString());
+
+  // Add category filter
+  if(newCategory !== '') {
+    queryParams.append('filter[0][field]', 'category');
+    queryParams.append('filter[0][type]', 'eq');
+    queryParams.append('filter[0][value]', newCategory);
+    console.log('newCategory: ', newCategory);
+
+    // Add ordering (using array notation for order-by)
+    queryParams.append('order-by[0][field]', 'name');
+    queryParams.append('order-by[0][type]', 'field');
+    queryParams.append('order-by[0][direction]', 'asc');
+  }
+
+  // Construct the final URL
+  const url = `https://api.foleon.com/v2/magazine/edition?${queryParams.toString()}`;
+
+  const response = await axios.get(url, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+      'Accept': 'application/hal+json',
+    },
+  });
+
+  const publications = response.data._embedded?.edition || [];
+  console.log('fetchProjectsByCategory: ', response);
+  console.log('publications: ', publications);
+  console.log('response.data: ', response.data);
+
+  return {
+    items: publications,
+    totalPages: response.data.page_count,
+  };
+};
+
