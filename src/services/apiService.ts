@@ -77,6 +77,13 @@ export const fetchFilteredProjects = async (
 export const fetchProjectsByCategory = async (page = 1, limit = 20, newCategory: string) => {
   const token = await getBearerToken();
 
+  if (newCategory === 'default') {
+    return {
+      items: [],
+      totalPages: 0,
+    };
+  }
+
   // Only query for pagination
   const queryParams = new URLSearchParams();
   queryParams.append('page', page.toString());
