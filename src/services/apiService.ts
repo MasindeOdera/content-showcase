@@ -77,7 +77,7 @@ export const fetchFilteredProjects = async (
 export const fetchProjectsByCategory = async (page = 1, limit = 20, newCategory: string) => {
   const token = await getBearerToken();
 
-  if (newCategory === 'default') {
+  if (newCategory === '') {
     return {
       items: [],
       totalPages: 0,
@@ -90,7 +90,7 @@ export const fetchProjectsByCategory = async (page = 1, limit = 20, newCategory:
   queryParams.append('limit', limit.toString());
 
   // Add category filter
-  if(newCategory !== '') {
+  if(newCategory !== '' && newCategory !== 'all') {
     queryParams.append('filter[0][field]', 'category');
     queryParams.append('filter[0][type]', 'eq');
     queryParams.append('filter[0][value]', newCategory);

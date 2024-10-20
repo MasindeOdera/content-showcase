@@ -22,7 +22,7 @@ const initialState: PublicationsState = {
   totalPages: 1,
   loading: false,
   filterOptions: [
-    { value: '', label: 'All' },
+    { value: 'all', label: 'All' },
     { value: 'annual_report', label: 'Annual Report' },
     { value: 'branded_content', label: 'Branded Content' },
     { value: 'brochure', label: 'Brochure' },

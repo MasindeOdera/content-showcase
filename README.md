@@ -21,7 +21,7 @@ The Content Showcase Application is a Proof of Concept (PoC) designed to demonst
 ### Prerequisites
 Ensure you have the following installed on your system:
 - Node.js (v14.x or above)
-- npm or yarn
+- npm
 
 ### Steps to Set Up
 
