@@ -124,3 +124,51 @@ export const fetchProjectsByCategory = async (page = 1, limit = 20, newCategory:
   };
 };
 
+// Function to search publications by name
+export const searchPublicationsByName = async (page = 1, limit = 20, searchQuery: string) => {
+  const token = await getBearerToken();
+
+  // Handle the case when searchQuery is empty
+  if (!searchQuery) {
+    console.log('No search query provided, returning no results.');
+    return {
+      items: [],
+      totalPages: 0,
+    };
+  }
+
+  // Create query parameters using the correct filter format
+  const queryParams = new URLSearchParams();
+  queryParams.append('page', page.toString());
+  queryParams.append('limit', limit.toString());
+
+  // Add the search filter for the name
+  queryParams.append('filter[0][field]', 'name');
+  queryParams.append('filter[0][type]', 'eq');
+  queryParams.append('filter[0][value]', searchQuery);
+
+  const url = `https://api.foleon.com/v2/magazine/edition?${queryParams.toString()}`;
+
+  try {
+    const response = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/hal+json',
+      },
+    });
+
+    const publications = response.data._embedded?.edition || [];
+    console.log('searchPublicationsByName: ', response);
+    return {
+      items: publications,
+      totalPages: response.data.page_count,
+    };
+  } catch (error) {
+    console.error('Error searching publications by name:', error);
+    return {
+      items: [],
+      totalPages: 0,
+    };
+  }
+};

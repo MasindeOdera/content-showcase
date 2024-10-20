@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { fetchProjects } from '../services/apiService.ts';
 import { fetchFilteredProjects as filterCategory } from '../services/apiService.ts';
 import { fetchProjectsByCategory } from '../services/apiService.ts';
+import { searchPublicationsByName } from '../services/apiService.ts';
 import { Publication } from '../types/index.ts';
 
 interface PublicationsState {
@@ -68,6 +69,14 @@ export const fetchProjectsByCategoryThunk = createAsyncThunk(
   }
 );
 
+export const searchPublicationsByNameThunk = createAsyncThunk(
+  'publications/searchPublicationsByName',
+  async ({ page, name }: { page: number; name: string }) => {
+    const response = await searchPublicationsByName(page, 20, name);
+    return { items: response.items as Publication[], totalPages: response.totalPages };
+  }
+);
+
 
 const publicationsSlice = createSlice({
   name: 'publications',
@@ -118,7 +127,19 @@ const publicationsSlice = createSlice({
       })
       .addCase(fetchProjectsByCategoryThunk.rejected, (state) => {
         state.loading = false;
-      });
+      })
+      // New reducers for searchPublicationsByNameThunk
+      .addCase(searchPublicationsByNameThunk.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(searchPublicationsByNameThunk.fulfilled, (state, action: PayloadAction<{ items: Publication[]; totalPages: number }>) => {
+        state.loading = false;
+        state.items = action.payload.items;
+        state.totalPages = action.payload.totalPages;
+      })
+      .addCase(searchPublicationsByNameThunk.rejected, (state) => {
+        state.loading = false;
+      })
   },
 });
 

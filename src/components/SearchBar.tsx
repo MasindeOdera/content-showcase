@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../store/store.ts';
-import { setSearchQuery, fetchPublications } from '../store/publicationsSlice.ts';
+import { setSearchQuery } from '../store/publicationsSlice.ts';
 import Container from './styles/container/container.ts';
 import Input from './styles/input/input.ts';
 import { useDebouncedValue } from '../hooks/useDebouncedValue.ts';
+import { searchPublicationsByNameThunk } from '../store/publicationsSlice.ts';
 
 const SearchBar: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -17,11 +18,17 @@ const SearchBar: React.FC = () => {
   // Debounced search query value, 500ms
   const debouncedSearchQuery = useDebouncedValue(inputValue, 500);
 
-  // Update the Redux state and fetch publications based on the debounced value
   useEffect(() => {
-    if (debouncedSearchQuery !== searchQuery) {
-      dispatch(setSearchQuery(debouncedSearchQuery));
-      dispatch(fetchPublications({ page: currentPage, query: { search: debouncedSearchQuery, category: filterCategory } }));
+    const searchPublications = async () => {
+      if (debouncedSearchQuery !== searchQuery) {
+        dispatch(setSearchQuery(debouncedSearchQuery));
+        console.log("debouncedSearchQuery:", debouncedSearchQuery);
+        dispatch(searchPublicationsByNameThunk({ page: currentPage, name: debouncedSearchQuery }));
+      }
+    };
+
+    if (debouncedSearchQuery) {
+      searchPublications();
     }
   }, [debouncedSearchQuery, searchQuery, dispatch, currentPage, filterCategory]);
  
