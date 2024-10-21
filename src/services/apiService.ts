@@ -128,8 +128,7 @@ export const fetchProjectsByCategory = async (page = 1, limit = 20, newCategory:
 export const searchPublicationsByName = async (page = 1, limit = 20, searchQuery: string) => {
   const token = await getBearerToken();
 
-  // Handle the case when searchQuery is empty
-  if (!searchQuery) {
+  if (searchQuery === '') {
     console.log('No search query provided, returning no results.');
     return {
       items: [],
@@ -137,15 +136,16 @@ export const searchPublicationsByName = async (page = 1, limit = 20, searchQuery
     };
   }
 
-  // Create query parameters using the correct filter format
   const queryParams = new URLSearchParams();
   queryParams.append('page', page.toString());
   queryParams.append('limit', limit.toString());
 
   // Add the search filter for the name
-  queryParams.append('filter[0][field]', 'name');
-  queryParams.append('filter[0][type]', 'eq');
-  queryParams.append('filter[0][value]', searchQuery);
+  if (searchQuery !== '') {
+    queryParams.append('filter[0][field]', 'name');
+    queryParams.append('filter[0][type]', 'eq');
+    queryParams.append('filter[0][value]', searchQuery);
+  }
 
   const url = `https://api.foleon.com/v2/magazine/edition?${queryParams.toString()}`;
 

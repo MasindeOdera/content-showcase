@@ -3,6 +3,7 @@ import { RootState } from '../store/store.ts';
 import { ResultsContainer } from './styles/container/container.ts';
 import Loader from './Loader.tsx';
 import { useDelayedLoading } from '../hooks/useDelayedLoading.ts';
+import { Link } from 'react-router-dom';
 
 const PublicationList: React.FC = () => {
   // Fetch publications and loading state from the Redux store
@@ -35,10 +36,12 @@ const PublicationList: React.FC = () => {
         {publications.length > 0 ? (
           publications.map((publication) => (
             <li key={publication.id}>
-              <div>
-                {publication.name} ({publication.category}) - {publication.id}
-              </div>
-              <div>Number of editions: {publication._computed.editions_count}</div>
+              <Link to={`/publications/${publication.id}`}>
+                <div>
+                  {publication.name} ({publication.category}) - {publication.id}
+                </div>
+                <div>Number of editions: {publication._computed.editions_count}</div>
+              </Link>
             </li>
           ))
         ) : (

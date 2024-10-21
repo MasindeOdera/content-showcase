@@ -3,6 +3,7 @@ import { fetchProjects } from '../services/apiService.ts';
 import { fetchFilteredProjects as filterCategory } from '../services/apiService.ts';
 import { fetchProjectsByCategory } from '../services/apiService.ts';
 import { searchPublicationsByName } from '../services/apiService.ts';
+import { fetchPublicationDetail } from '../services/apiService.ts';
 import { Publication } from '../types/index.ts';
 
 interface PublicationsState {
@@ -13,6 +14,7 @@ interface PublicationsState {
   totalPages: number;
   loading: boolean;
   filterOptions: { value: string; label: string }[];
+  selectedPublication: Publication | null;
 }
 
 const initialState: PublicationsState = {
@@ -43,6 +45,7 @@ const initialState: PublicationsState = {
     { value: 'other', label: 'Other' },
     { value: 'whitepaper', label: 'Whitepaper' },
   ],
+  selectedPublication: null,
 };
 
 export const fetchPublications = createAsyncThunk(
@@ -74,6 +77,14 @@ export const searchPublicationsByNameThunk = createAsyncThunk(
   async ({ page, name }: { page: number; name: string }) => {
     const response = await searchPublicationsByName(page, 20, name);
     return { items: response.items as Publication[], totalPages: response.totalPages };
+  }
+);
+
+export const fetchPublicationDetailThunk = createAsyncThunk(
+  'publications/fetchPublicationDetail',
+  async (id: string) => {
+    const response = await fetchPublicationDetail(id);
+    return response; // Return the publication detail data
   }
 );
 
@@ -140,6 +151,16 @@ const publicationsSlice = createSlice({
       .addCase(searchPublicationsByNameThunk.rejected, (state) => {
         state.loading = false;
       })
+      .addCase(fetchPublicationDetailThunk.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchPublicationDetailThunk.fulfilled, (state, action: PayloadAction<Publication>) => {
+        state.loading = false;
+        state.selectedPublication = action.payload; // Store the publication details
+      })
+      .addCase(fetchPublicationDetailThunk.rejected, (state) => {
+        state.loading = false;
+      });
   },
 });
 
