@@ -52,7 +52,7 @@ const PublicationDetail: React.FC = () => {
       <p>Number of Editions: {selectedPublication._computed?.editions_count}</p>
       <p>Published Date: {selectedPublication.created_on}</p>
       {publicationImageUrl && (
-        <img src={publicationImageUrl} alt="Desktop view" style={{ maxWidth: '100%' }} />
+        <img src={publicationImageUrl} alt="Image" title={selectedPublication.name} style={{ maxWidth: '100%' }} />
       )}
     </ResultsContainer>
   );

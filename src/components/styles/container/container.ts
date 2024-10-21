@@ -1,4 +1,4 @@
-import { Container, ResultsContainer, GridContainer } from "./container.styles.ts";
+import { Container, ResultsContainer, FlexContainer } from "./container.styles.ts";
 
 export default Container;
-export { ResultsContainer, GridContainer };
+export { ResultsContainer, FlexContainer };

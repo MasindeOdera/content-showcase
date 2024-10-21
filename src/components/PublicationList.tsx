@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/store.ts';
-import { ResultsContainer, GridContainer } from './styles/container/container.ts';
+import { ResultsContainer, FlexContainer } from './styles/container/container.ts';
 import { Card } from './styles/card/card.styles.ts';
 import Loader from './Loader.tsx';
 import { useDelayedLoading } from '../hooks/useDelayedLoading.ts';
@@ -33,18 +33,17 @@ const PublicationList: React.FC = () => {
 
   return (
     <ResultsContainer>
-      <GridContainer>
+      <FlexContainer>
         {publications.length > 0 ? (
           publications.map((publication) => {
             // Use a placeholder image if no screenshot is available
-            const imageUrl = publication._embedded?.screenshot?._links?.desktop?.href || 'https://placehold.co/140x140?text=No+Image';
+            const imageUrl = publication._embedded?.screenshot?._links?.google?.href || 'https://placehold.co/140x140?text=No+Image';
 
             return (
               <Card key={publication.id}>
                 <Link to={`/publications/${publication.id}`}>
                   <div>
-                    {/* Display the image or fallback to placeholder */}
-                    <img src={imageUrl} alt="Desktop view" style={{ width: '100%', height: '150px', objectFit: 'cover' }} />
+                    <img src={imageUrl} alt={publication.name} title={publication.name} style={{ width: '100%', height: '150px', objectFit: 'cover' }} />
                   </div>
                   <div>
                     <h3>{publication.name}</h3>
@@ -58,7 +57,7 @@ const PublicationList: React.FC = () => {
         ) : (
           <p>No publications found</p>
         )}
-      </GridContainer>
+      </FlexContainer>
     </ResultsContainer>
   );
 };

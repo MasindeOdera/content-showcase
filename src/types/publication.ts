@@ -33,6 +33,9 @@ export interface Publication {
           desktop: {
             href: string;
           };
+          google: {
+            href: string;
+          };
         };
       };
     };

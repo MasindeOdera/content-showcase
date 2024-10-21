@@ -7,6 +7,12 @@ export const Card = styled.div`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 200px;
+  margin: auto;
 
   &:hover {
     transform: translateY(-5px);
@@ -16,11 +22,13 @@ export const Card = styled.div`
   a {
     text-decoration: none;
     color: inherit;
+    display: block;
+    height: 100%;
   }
 
   img {
     width: 100%;
-    height: 150px;
+    height: 200px;
     object-fit: cover;
   }
 
