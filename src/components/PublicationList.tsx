@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/store.ts';
-import { ResultsContainer } from './styles/container/container.ts';
+import { ResultsContainer, GridContainer } from './styles/container/container.ts';
+import { Card } from './styles/card/card.styles.ts';
 import Loader from './Loader.tsx';
 import { useDelayedLoading } from '../hooks/useDelayedLoading.ts';
 import { Link } from 'react-router-dom';
@@ -32,22 +33,32 @@ const PublicationList: React.FC = () => {
 
   return (
     <ResultsContainer>
-      <ul>
+      <GridContainer>
         {publications.length > 0 ? (
-          publications.map((publication) => (
-            <li key={publication.id}>
-              <Link to={`/publications/${publication.id}`}>
-                <div>
-                  {publication.name} ({publication.category}) - {publication.id}
-                </div>
-                <div>Number of editions: {publication._computed.editions_count}</div>
-              </Link>
-            </li>
-          ))
+          publications.map((publication) => {
+            // Use a placeholder image if no screenshot is available
+            const imageUrl = publication._embedded?.screenshot?._links?.desktop?.href || 'https://placehold.co/140x140?text=No+Image';
+
+            return (
+              <Card key={publication.id}>
+                <Link to={`/publications/${publication.id}`}>
+                  <div>
+                    {/* Display the image or fallback to placeholder */}
+                    <img src={imageUrl} alt="Desktop view" style={{ width: '100%', height: '150px', objectFit: 'cover' }} />
+                  </div>
+                  <div>
+                    <h3>{publication.name}</h3>
+                    <p>{publication.category} - {publication.id}</p>
+                    <p>Number of editions: {publication._computed.editions_count}</p>
+                  </div>
+                </Link>
+              </Card>
+            );
+          })
         ) : (
-          <li>No publications found</li>
+          <p>No publications found</p>
         )}
-      </ul>
+      </GridContainer>
     </ResultsContainer>
   );
 };

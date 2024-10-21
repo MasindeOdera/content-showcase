@@ -2,6 +2,7 @@ export interface Publication {
     id: string;
     name: string;
     category: string;
+    status: string;
     description: string;
     created_on: string;
     modified_on: string;
@@ -23,6 +24,13 @@ export interface Publication {
         id: number;
         _links: {
           self: {
+            href: string;
+          };
+        };
+      };
+      screenshot: {
+        _links: {
+          desktop: {
             href: string;
           };
         };

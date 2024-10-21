@@ -38,6 +38,8 @@ const PublicationDetail: React.FC = () => {
     );
   }
 
+  const publicationImageUrl = selectedPublication._embedded?.screenshot?._links?.desktop?.href;
+
   return (
     <ResultsContainer>
       <Button onClick={() => navigate(-1)}>
@@ -46,9 +48,12 @@ const PublicationDetail: React.FC = () => {
 
       <h1>{selectedPublication.name}</h1>
       <p>Category: {selectedPublication.category}</p>
+      <p>Status: {selectedPublication.status}</p>
       <p>Number of Editions: {selectedPublication._computed?.editions_count}</p>
       <p>Published Date: {selectedPublication.created_on}</p>
-      {/* Add other details you want to show here */}
+      {publicationImageUrl && (
+        <img src={publicationImageUrl} alt="Desktop view" style={{ maxWidth: '100%' }} />
+      )}
     </ResultsContainer>
   );
 };
