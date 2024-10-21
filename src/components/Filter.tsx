@@ -35,7 +35,6 @@ const Filter: React.FC = () => {
 
   return (
     <Container>
-      <label htmlFor="category">Filter by category: </label>
       <FilterSelect id="category" value={selectedCategory} onChange={handleFilterChange}>
         <option value="">Filter by category</option>
         {filterOptions.map((option) => (

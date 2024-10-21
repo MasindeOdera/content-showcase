@@ -5,6 +5,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 300px;
+  align-items: center;
 
   @media (min-width: 768px) {
     width: 480px;
@@ -46,5 +47,25 @@ export const FlexContainer = styled.div`
       flex: 1 1 100%;
       max-width: 100%;
     }
+  }
+`;
+
+export const ControlBarContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  
+  /* Ensure the items stack on smaller screens */
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  /* Customize widths for larger screens */
+  & > * {
+    flex: 1; /* Distribute space evenly between the SearchBar and Filter */
+    min-width: 200px; /* Ensure a minimum width */
   }
 `;
