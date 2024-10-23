@@ -34,6 +34,9 @@ const PublicationDetail: React.FC = () => {
   if (!selectedPublication) {
     return (
       <ResultsContainer>
+        <Button onClick={() => navigate(-1)}>
+          ← Back
+        </Button>
         <p>Publication not found.</p>
       </ResultsContainer>
     );

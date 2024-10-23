@@ -1,9 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { fetchProjects } from '../services/apiService.ts';
-import { fetchFilteredProjects as filterCategory } from '../services/apiService.ts';
-import { fetchProjectsByCategory } from '../services/apiService.ts';
-import { searchPublicationsByName } from '../services/apiService.ts';
-import { fetchPublicationDetail } from '../services/apiService.ts';
+import { fetchProjectsByCategory, searchPublicationsByName, fetchPublicationDetail } from '../services/apiService.ts';
 import { Publication } from '../types/index.ts';
 
 interface PublicationsState {
@@ -48,28 +44,10 @@ const initialState: PublicationsState = {
   selectedPublication: null,
 };
 
-export const fetchPublications = createAsyncThunk(
-  'publications/fetchPublications',
-  async ({ page, query }: { page: number; query: { search: string; category: string } }) => {
-    const response = await fetchProjects(page, query);
-    return { items: response.items as Publication[], totalPages: response.totalPages };
-  }
-);
-
-export const fetchFilteredProjects = createAsyncThunk(
-  'publications/fetchFilteredProjects',
-  async ({ page, query }: { page: number; query: { search: string; category: string } }) => {
-    const response = await filterCategory(page, query);
-    console.log("fetchFilteredProjects is used");
-    return response;
-  }
-);
-
 export const fetchProjectsByCategoryThunk = createAsyncThunk(
   'publications/fetchProjectsByCategory',
   async ({ page, newCategory }: { page: number; newCategory: string }) => {
     const response = await fetchProjectsByCategory(page, 20, newCategory);
-    console.log("fetchProjectsByCategoryThunk is used");
     return { items: response.items as Publication[], totalPages: response.totalPages };
   }
 );
@@ -78,7 +56,6 @@ export const searchPublicationsByNameThunk = createAsyncThunk(
   'publications/searchPublicationsByName',
   async ({ page, name }: { page: number; name: string }) => {
     const response = await searchPublicationsByName(page, 20, name);
-    console.log("searchPublicationsByNameThunk is used");
     return { items: response.items as Publication[], totalPages: response.totalPages };
   }
 );
@@ -87,7 +64,6 @@ export const fetchPublicationDetailThunk = createAsyncThunk(
   'publications/fetchPublicationDetail',
   async (id: string) => {
     const response = await fetchPublicationDetail(id);
-    console.log("fetchPublicationDetailThunk is used");
     return response;
   }
 );
@@ -109,28 +85,6 @@ const publicationsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchPublications.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(fetchPublications.fulfilled, (state, action: PayloadAction<{ items: Publication[]; totalPages: number }>) => {
-        state.loading = false;
-        state.items = action.payload.items;
-        state.totalPages = action.payload.totalPages;
-      })
-      .addCase(fetchPublications.rejected, (state) => {
-        state.loading = false;
-      })
-      .addCase(fetchFilteredProjects.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(fetchFilteredProjects.fulfilled, (state, action: PayloadAction<{ items: Publication[]; totalPages: number }>) => {
-        state.loading = false;
-        state.items = action.payload.items;
-        state.totalPages = action.payload.totalPages;
-      })
-      .addCase(fetchFilteredProjects.rejected, (state) => {
-        state.loading = false;
-      })
       .addCase(fetchProjectsByCategoryThunk.pending, (state) => {
         state.loading = true;
       })

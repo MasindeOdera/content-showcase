@@ -2,7 +2,6 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../store/store.ts';
 import { setFilter } from '../store/publicationsSlice.ts';
-import { fetchProjectsByCategory } from '../services/apiService.ts';
 import { fetchProjectsByCategoryThunk } from '../store/publicationsSlice.ts';
 import FilterSelect from './styles/select/select.ts';
 import Container from './styles/container/container.ts';
@@ -23,11 +22,6 @@ const Filter: React.FC = () => {
 
     // Update the Redux store with the new filter
     dispatch(setFilter(newCategory));
-
-    // Fetch the projects by the new category
-    const filteredProjects = await fetchProjectsByCategory(currentPage, 20, newCategory);
-
-    console.log('Filtered Projects: ', filteredProjects);
   
     dispatch(fetchProjectsByCategoryThunk({ page: currentPage, newCategory }));
 
