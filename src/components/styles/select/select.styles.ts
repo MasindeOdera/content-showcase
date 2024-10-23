@@ -5,4 +5,5 @@ export const FilterSelect = styled.select`
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  cursor: pointer;
 `;
