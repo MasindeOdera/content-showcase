@@ -17,12 +17,12 @@ export const Container = styled.div`
 `;
 
 export const ResultsContainer = styled(Container)`
-  width: 100%;
+  width: -webkit-fill-available;
   color: #000;
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
-  max-width: 1200px;
+  max-width: 580px;
   margin: 0 auto;
   padding: 10px;
 `;
@@ -56,16 +56,20 @@ export const ControlBarContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   
   /* Ensure the items stack on smaller screens */
   @media (max-width: 768px) {
     flex-direction: column;
+    gap: 0px;
+    margin-bottom: 8px;
   }
 
   /* Customize widths for larger screens */
   & > * {
-    flex: 1; /* Distribute space evenly between the SearchBar and Filter */
-    min-width: 200px; /* Ensure a minimum width */
+    flex: 1;
+    gap: 20px;
+    min-width: 200px;
+    margin-bottom: 20px;
   }
 `;
