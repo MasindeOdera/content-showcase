@@ -6,6 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   width: 300px;
   align-items: center;
+  transition: transform 0.2s ease-in-out;
 
   @media (min-width: 768px) {
     width: 480px;
@@ -25,6 +26,7 @@ export const ResultsContainer = styled(Container)`
   border-radius: 5px;
   margin: 0 auto;
   padding: 6px;
+  transition: transform 0.2s ease-in-out;
 
   p {
     margin: auto;
@@ -42,6 +44,7 @@ export const FlexContainer = styled.div`
   & > div {
     flex: 1 1 calc(100% / 3 - 20px);
     max-width: calc(100% / 3 - 20px);
+    transition: transform 0.2s ease-in-out;
 
     @media (max-width: 1024px) {
       flex: 1 1 calc(100% / 2 - 20px);
@@ -52,6 +55,12 @@ export const FlexContainer = styled.div`
       flex: 1 1 100%;
       max-width: 100%;
     }
+  }
+
+  & > div:only-child {
+    flex: 1 1 100%;
+    max-width: 600px;
+    margin: 0 auto;
   }
 `;
 
