@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "jest --config jest.config.ts",
+    "prebuild": "echo Skipping tests",
     "predeploy": "npm run build"
   },
   "dependencies": {
@@ -35,6 +36,7 @@
     "@types/react-router-dom": "^5.3.3",
     "@vitejs/plugin-react": "^4.3.1",
     "babel-plugin-styled-components": "^2.1.4",
+    "dotenv": "^16.4.5",
     "eslint": "^9.9.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",

@@ -196,6 +196,7 @@ Error generating stack: `+i.message+`
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  cursor: pointer;
 `,zE=()=>{const e=El(),t=ke(i=>i.publications.category),n=ke(i=>i.publications.filterOptions),r=ke(i=>i.publications.currentPage),o=async i=>{const l=i.target.value;e(Sw(l));const s=await lm(r,20,l);console.log("Filtered Projects: ",s),e(pi({page:r,newCategory:l}))};return R.jsx(Oo,{children:R.jsxs(AE,{id:"category",value:t,onChange:o,children:[R.jsx("option",{value:"",children:"Filter by category"}),n.map(i=>R.jsx("option",{value:i.value,children:i.label},i.value))]})})},DE=pt.div`
   background: #fff;
   border: 1px solid #e0e0e0;
