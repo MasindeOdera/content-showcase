@@ -6,6 +6,7 @@ import { fetchPublicationDetailThunk } from '../store/publicationsSlice.ts';
 import Loader from './Loader.tsx';
 import { ResultsContainer } from './styles/container/container.ts';
 import { Button } from './styles/button/button.styles.ts';
+import { formatDate } from '../utils/dateUtils.ts';
 
 const PublicationDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -39,6 +40,7 @@ const PublicationDetail: React.FC = () => {
   }
 
   const publicationImageUrl = selectedPublication._embedded?.screenshot?._links?.desktop?.href;
+  const dateCreated = formatDate(selectedPublication.created_on);
 
   return (
     <ResultsContainer>
@@ -50,7 +52,7 @@ const PublicationDetail: React.FC = () => {
       <p>Category: {selectedPublication.category}</p>
       <p>Status: {selectedPublication.status}</p>
       <p>Number of Editions: {selectedPublication._computed?.editions_count}</p>
-      <p>Published Date: {selectedPublication.created_on}</p>
+      <p>Created on: <i>{dateCreated}</i></p>
       {publicationImageUrl && (
         <img src={publicationImageUrl} alt="Image" title={selectedPublication.name} style={{ maxWidth: '100%' }} />
       )}

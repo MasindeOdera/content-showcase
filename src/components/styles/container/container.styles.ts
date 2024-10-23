@@ -18,12 +18,17 @@ export const Container = styled.div`
 
 export const ResultsContainer = styled(Container)`
   width: -webkit-fill-available;
+  min-height: 160px;
   color: #000;
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
   margin: 0 auto;
   padding: 6px;
+
+  p {
+    margin: auto;
+  }
 `;
 
 export const FlexContainer = styled.div`
@@ -32,6 +37,7 @@ export const FlexContainer = styled.div`
   justify-content: space-between;
   gap: 20px;
   padding: 20px;
+  margin: auto;
 
   & > div {
     flex: 1 1 calc(100% / 3 - 20px);

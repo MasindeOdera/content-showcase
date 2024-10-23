@@ -39,7 +39,7 @@ const PublicationList: React.FC = () => {
         {publications.length > 0 ? (
           publications.map((publication) => {
             const imageUrl = publication._embedded?.screenshot?._links?.google?.href || 'https://placehold.co/140x140?text=No+Image';
-            const formattedDate = formatDate(publication.modified_on);
+            const dateModified = formatDate(publication.modified_on);
 
             return (
               <Card key={publication.id}>
@@ -50,7 +50,7 @@ const PublicationList: React.FC = () => {
                   <div>
                     <h3>{publication.name}</h3>
                     <p>Status: <b>{publication.status}</b></p>
-                    <p>Last Published: <i>{formattedDate}</i></p>
+                    <p>Last Published: <i>{dateModified}</i></p>
                   </div>
                 </Link>
               </Card>
