@@ -5,6 +5,8 @@ import { Card } from './styles/card/card.styles.ts';
 import Loader from './Loader.tsx';
 import { useDelayedLoading } from '../hooks/useDelayedLoading.ts';
 import { Link } from 'react-router-dom';
+import { formatDate } from '../utils/dateUtils.ts';
+
 
 const PublicationList: React.FC = () => {
   // Fetch publications and loading state from the Redux store
@@ -36,8 +38,8 @@ const PublicationList: React.FC = () => {
       <FlexContainer>
         {publications.length > 0 ? (
           publications.map((publication) => {
-            // Use a placeholder image if no screenshot is available
             const imageUrl = publication._embedded?.screenshot?._links?.google?.href || 'https://placehold.co/140x140?text=No+Image';
+            const formattedDate = formatDate(publication.modified_on);
 
             return (
               <Card key={publication.id}>
@@ -47,8 +49,8 @@ const PublicationList: React.FC = () => {
                   </div>
                   <div>
                     <h3>{publication.name}</h3>
-                    <p>{publication.category} - {publication.id}</p>
-                    <p>Number of editions: {publication._computed.editions_count}</p>
+                    <p>Status: <b>{publication.status}</b></p>
+                    <p>Last Published: <i>{formattedDate}</i></p>
                   </div>
                 </Link>
               </Card>

@@ -12,7 +12,7 @@ export const Container = styled.div`
   }
 
   @media (min-width: 1024px) {
-    width: 600px;
+    width: 700px;
   }
 `;
 
@@ -22,9 +22,8 @@ export const ResultsContainer = styled(Container)`
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
-  max-width: 580px;
   margin: 0 auto;
-  padding: 10px;
+  padding: 6px;
 `;
 
 export const FlexContainer = styled.div`
