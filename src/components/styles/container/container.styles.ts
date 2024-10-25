@@ -65,6 +65,18 @@ export const FlexContainer = styled.div`
     }
   }
 
+  & > div:nth-child(2):last-child,
+  & > div:first-child:nth-last-child(2) {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+    margin: auto;
+
+    @media (max-width: 768px) {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+  }
+
   & > div:only-child {
     flex: 1 1 100%;
     max-width: 600px;
