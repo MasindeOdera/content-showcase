@@ -38,7 +38,7 @@ const PublicationList: React.FC = () => {
       <FlexContainer>
         {publications.length > 0 ? (
           publications.map((publication) => {
-            const imageUrl = publication._embedded?.screenshot?._links?.google?.href || 'https://placehold.co/140x140?text=No+Image';
+            const imageUrl = publication.screenshot || 'https://placehold.co/140x140?text=No+Image';
             const dateModified = formatDate(publication.modified_on);
 
             return (

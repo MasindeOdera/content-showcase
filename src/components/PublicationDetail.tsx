@@ -42,7 +42,7 @@ const PublicationDetail: React.FC = () => {
     );
   }
 
-  const publicationImageUrl = selectedPublication._embedded?.screenshot?._links?.desktop?.href;
+  const publicationImageUrl = selectedPublication.screenshot;
   const dateCreated = formatDate(selectedPublication.created_on);
 
   return (
@@ -54,8 +54,8 @@ const PublicationDetail: React.FC = () => {
       <h1>{selectedPublication.name}</h1>
       <p>Category: {selectedPublication.category}</p>
       <p>Status: {selectedPublication.status}</p>
-      <p>Number of Editions: {selectedPublication._computed?.editions_count}</p>
       <p>Created on: <i>{dateCreated}</i></p>
+      <a href={selectedPublication._links?.comments.href} title='comments'>Comments</a>
       {publicationImageUrl && (
         <img src={publicationImageUrl} alt="Image" title={selectedPublication.name} style={{ maxWidth: '100%' }} />
       )}

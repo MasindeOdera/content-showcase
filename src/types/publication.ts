@@ -1,33 +1,29 @@
 export interface Publication {
-    id: string;
+    id: number;
     name: string;
     category: string;
     status: string;
-    description: string;
     created_on: string;
     modified_on: string;
-    _computed: {
-      editions_count: number;
-      editions_published_count: number;
-      background_color: string;
-    };
+    screenshot?: string;
     _links: {
       published: {
+        href: string;
+      };
+      publish: {
         href: string;
       };
       self: {
         href: string;
       };
+      comments: {
+        href: string;
+      };
+      editor: {
+        href: string;
+      };
     };
     _embedded: {
-      account: {
-        id: number;
-        _links: {
-          self: {
-            href: string;
-          };
-        };
-      };
       screenshot: {
         _links: {
           desktop: {

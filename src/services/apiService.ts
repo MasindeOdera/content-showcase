@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { getBearerToken } from './authService.ts';
+import { Publication } from '../types/index.ts';
 
 
 export const fetchPublicationDetail = async (id: string) => {
@@ -51,8 +52,16 @@ export const fetchProjectsByCategory = async (page = 1, limit = 20, newCategory:
 
   const publications = response.data._embedded?.edition || [];
 
+  const mappedPublications = publications.map((publication: Publication) => ({
+    id: publication.id,
+    name: publication.name,
+    modified_on: publication.modified_on,
+    status: publication.status,
+    screenshot: publication._embedded?.screenshot?._links?.google?.href || '',
+  }));
+
   return {
-    items: publications,
+    items: mappedPublications,
     totalPages: response.data.page_count,
   };
 };
@@ -92,6 +101,14 @@ export const searchPublicationsByName = async (page = 1, limit = 20, searchQuery
     });
 
     const publications = response.data._embedded?.edition || [];
+
+    // const mappedPublications = publications.map((publication: Publication) => ({
+    //   id: publication.id,
+    //   name: publication.name,
+    //   modified_on: publication.modified_on,
+    //   status: publication.status,
+    //   screenshot: publication._embedded?.screenshot?._links?.desktop?.href || '',
+    // }));
 
     return {
       items: publications,
