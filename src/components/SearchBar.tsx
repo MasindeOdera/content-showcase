@@ -22,7 +22,6 @@ const SearchBar: React.FC = () => {
     const searchPublications = async () => {
       if (debouncedSearchQuery !== searchQuery) {
         dispatch(setSearchQuery(debouncedSearchQuery));
-        console.log("debouncedSearchQuery:", debouncedSearchQuery);
         dispatch(searchPublicationsByNameThunk({ page: currentPage, name: debouncedSearchQuery }));
       }
     };

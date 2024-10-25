@@ -33,6 +33,14 @@ export const ResultsContainer = styled(Container)`
   }
 `;
 
+export const LoadingDetailContainer = styled(ResultsContainer)`
+  min-height: 360px;
+
+  div {
+    margin: auto;
+  }
+`;
+
 export const FlexContainer = styled.div`
   display: flex;
   flex-wrap: wrap;

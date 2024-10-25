@@ -22,6 +22,12 @@ export interface Publication {
       editor: {
         href: string;
       };
+      preview: {
+        href: string;
+      };
+      personalize: {
+        href: string;
+      };
     };
     _embedded: {
       screenshot: {

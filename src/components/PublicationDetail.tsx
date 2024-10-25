@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom'; // Assuming you are u
 import { RootState, AppDispatch } from '../store/store.ts';
 import { fetchPublicationDetailThunk } from '../store/publicationsSlice.ts';
 import Loader from './Loader.tsx';
-import { ResultsContainer } from './styles/container/container.ts';
+import { ResultsContainer, LoadingDetailContainer } from './styles/container/container.ts';
 import { Button } from './styles/button/button.styles.ts';
 import { formatDate } from '../utils/dateUtils.ts';
 
@@ -25,9 +25,9 @@ const PublicationDetail: React.FC = () => {
 
   if (loading) {
     return (
-      <ResultsContainer>
+      <LoadingDetailContainer>
         <Loader />
-      </ResultsContainer>
+      </LoadingDetailContainer>
     );
   }
 
@@ -42,7 +42,7 @@ const PublicationDetail: React.FC = () => {
     );
   }
 
-  const publicationImageUrl = selectedPublication.screenshot;
+  const publicationImageUrl = selectedPublication.screenshot || 'https://placehold.co/140x140?text=No+Image';
   const dateCreated = formatDate(selectedPublication.created_on);
 
   return (
