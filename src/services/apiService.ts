@@ -11,24 +11,8 @@ export const fetchPublicationDetail = async (id: string) => {
   );
 
   const publication = response.data;
-
-  const mappedPublication = {
-    id: publication.id,
-    name: publication.name,
-    category: publication.category,
-    created_on: publication.created_on,
-    status: publication.status,
-    screenshot: publication._embedded?.screenshot?._links?.desktop?.href || '',
-    comments: publication._links?.comments?.href || '',
-    editor: publication._links?.editor?.href || '',
-    personalize: publication._links?.personalize?.href || '',
-    preview: publication._links?.preview?.href || '',
-    publish: publication._links?.publish?.href || '',
-    published: publication._links?.published?.href || '',
-    self: publication._links?.self?.href || '',
-  };
   
-  return mappedPublication;
+  return publication;
 };
 
 export const fetchProjectsByCategory = async (page = 1, limit = 20, newCategory: string) => {
@@ -124,7 +108,7 @@ export const searchPublicationsByName = async (page = 1, limit = 20, searchQuery
     const mappedPublications = publications.map((publication: Publication) => ({
       id: publication.id,
       name: publication.name,
-      modified_on: publication.modified_on,
+      modified_on: publication.modified_on ?? '',
       status: publication.status,
       screenshot: publication._embedded?.screenshot?._links?.google?.href || '',
     }));

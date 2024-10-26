@@ -64,7 +64,26 @@ export const fetchPublicationDetailThunk = createAsyncThunk(
   'publications/fetchPublicationDetail',
   async (id: string) => {
     const response = await fetchPublicationDetail(id);
-    return response;
+    const publication = response;
+    console.log("publication in publicationsSlice detail thunk:  ", publication);
+    // const publication = response.data;
+    const mappedPublication: Publication = {
+      id: publication.id,
+      name: publication.name,
+      category: publication.category,
+      created_on: publication.created_on,
+      modified_on: publication.modified_on ?? '',
+      status: publication.status,
+      screenshot: publication._embedded?.screenshot?._links?.desktop?.href || '',
+      editor: publication._links?.editor?.href || '',
+      personalize: publication._links?.personalize?.href || '',
+      preview: publication._links?.preview?.href || '',
+      publish: publication._links?.publish?.href || '',
+      published: publication._links?.published?.href || '',
+      self: publication._links?.self?.href || '',
+    };
+
+    return mappedPublication;
   }
 );
 

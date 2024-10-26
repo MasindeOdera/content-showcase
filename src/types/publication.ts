@@ -4,38 +4,45 @@ export interface Publication {
     category: string;
     status: string;
     created_on: string;
-    modified_on: string;
+    modified_on?: string;
     screenshot?: string;
-    _links: {
-      published: {
+    published?: string;
+    publish?: string;
+    self?: string;
+    comments?: string;
+    editor?: string;
+    preview?: string;
+    personalize?: string;
+    _links?: {
+      published?: {
         href: string;
       };
-      publish: {
+      publish?: {
         href: string;
       };
-      self: {
+      self?: {
         href: string;
       };
-      comments: {
+      comments?: {
         href: string;
       };
-      editor: {
+      editor?: {
         href: string;
       };
-      preview: {
+      preview?: {
         href: string;
       };
-      personalize: {
+      personalize?: {
         href: string;
       };
     };
-    _embedded: {
-      screenshot: {
-        _links: {
-          desktop: {
+    _embedded?: {
+      screenshot?: {
+        _links?: {
+          desktop?: {
             href: string;
           };
-          google: {
+          google?: {
             href: string;
           };
         };

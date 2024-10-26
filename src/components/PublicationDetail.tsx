@@ -55,7 +55,7 @@ const PublicationDetail: React.FC = () => {
       <p>Category: {selectedPublication.category}</p>
       <p>Status: {selectedPublication.status}</p>
       <p>Created on: <i>{dateCreated}</i></p>
-      <a href={selectedPublication._links?.comments.href} title='comments'>Comments</a>
+      <a href={selectedPublication._links?.comments?.href || '#'} title='comments'>Comments</a>
       {publicationImageUrl && (
         <img src={publicationImageUrl} alt="Image" title={selectedPublication.name} style={{ maxWidth: '100%' }} />
       )}
