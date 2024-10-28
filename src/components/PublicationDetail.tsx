@@ -4,10 +4,16 @@ import { useParams, useNavigate } from 'react-router-dom'; // Assuming you are u
 import { RootState, AppDispatch } from '../store/store.ts';
 import { fetchPublicationDetailThunk } from '../store/publicationsSlice.ts';
 import Loader from './Loader.tsx';
-import { ResultsContainer, LoadingDetailContainer } from './styles/container/container.ts';
+import { ResultsContainer, LoadingDetailContainer, FlexContainer } from './styles/container/container.ts';
 import { Button } from './styles/button/button.styles.ts';
 import { formatDate } from '../utils/dateUtils.ts';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import PreviewIcon from '@mui/icons-material/Preview';
+import EditNoteIcon from '@mui/icons-material/EditNote';
+import PublishIcon from '@mui/icons-material/Publish';
+import SettingsAccessibilityIcon from '@mui/icons-material/SettingsAccessibility';
+import PublishedWithChangesIcon from '@mui/icons-material/PublishedWithChanges';
+import ContactPageIcon from '@mui/icons-material/ContactPage';
 
 const PublicationDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -53,10 +59,29 @@ const PublicationDetail: React.FC = () => {
       </Button>
 
       <h1>{selectedPublication.name}</h1>
-      <p>Category: {selectedPublication.category}</p>
-      <p>Status: {selectedPublication.status}</p>
-      <p>Created on: <i>{dateCreated}</i></p>
-      <a href={selectedPublication._links?.comments?.href || '#'} title='comments'>Comments</a>
+      <p><b>Category: </b>{selectedPublication.category ? selectedPublication.category : 'Not assigned'}</p>
+      <p><b>Status: </b>{selectedPublication.status}</p>
+      <p><b>Created on: </b><i>{dateCreated}</i></p>
+      <FlexContainer>
+        <a href={selectedPublication.preview || '#'} title="preview" target="_blank" rel="noopener noreferrer">
+          <PreviewIcon style={{ fontSize: 24, color: '#002B48', cursor: 'pointer' }} />
+        </a>
+        <a href={selectedPublication.editor || '#'} title="edit" target="_blank" rel="noopener noreferrer">
+          <EditNoteIcon style={{ fontSize: 24, color: '#002B48', cursor: 'pointer' }} />
+        </a>
+        <a href={selectedPublication.publish || '#'} title="publish" target="_blank" rel="noopener noreferrer">
+          <PublishIcon style={{ fontSize: 24, color: '#002B48', cursor: 'pointer' }} />
+        </a>
+        <a href={selectedPublication.personalize || '#'} title="personalize" target="_blank" rel="noopener noreferrer">
+          <SettingsAccessibilityIcon style={{ fontSize: 24, color: '#002B48', cursor: 'pointer' }} />
+        </a>
+        <a href={selectedPublication.published || '#'} title="published" target="_blank" rel="noopener noreferrer">
+          <PublishedWithChangesIcon style={{ fontSize: 24, color: '#002B48', cursor: 'pointer' }} />
+        </a>
+        <a href={selectedPublication.self || '#'} title="edition" target="_blank" rel="noopener noreferrer">
+          <ContactPageIcon style={{ fontSize: 24, color: '#002B48', cursor: 'pointer' }} />
+        </a>
+      </FlexContainer>
       {publicationImageUrl && (
         <img src={publicationImageUrl} alt="Image" title={selectedPublication.name} style={{ maxWidth: '100%' }} />
       )}

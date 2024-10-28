@@ -9,7 +9,6 @@ export interface Publication {
     published?: string;
     publish?: string;
     self?: string;
-    comments?: string;
     editor?: string;
     preview?: string;
     personalize?: string;
@@ -21,9 +20,6 @@ export interface Publication {
         href: string;
       };
       self?: {
-        href: string;
-      };
-      comments?: {
         href: string;
       };
       editor?: {
