@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom'; // Assuming you are using react-router for routing
+import { useParams, useNavigate } from 'react-router-dom';
 import { RootState, AppDispatch } from '../store/store.ts';
 import { fetchPublicationDetailThunk } from '../store/publicationsSlice.ts';
 import Loader from './Loader.tsx';
-import { ResultsContainer, LoadingDetailContainer, FlexContainer } from './styles/container/container.ts';
+import { ResultsContainer, LoadingDetailContainer, FlexContainer, AlignLeftContainer } from './styles/container/container.ts';
 import { Button } from './styles/button/button.styles.ts';
 import { formatDate } from '../utils/dateUtils.ts';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -41,9 +41,11 @@ const PublicationDetail: React.FC = () => {
   if (!selectedPublication) {
     return (
       <ResultsContainer>
-        <Button onClick={() => navigate(-1)}>
-          <ArrowBackIcon /> Back
-        </Button>
+        <AlignLeftContainer>
+          <Button onClick={() => navigate(-1)}>
+            <ArrowBackIcon /> Back
+          </Button>
+        </AlignLeftContainer>
         <p>Publication not found.</p>
       </ResultsContainer>
     );
@@ -54,14 +56,17 @@ const PublicationDetail: React.FC = () => {
 
   return (
     <ResultsContainer>
-      <Button onClick={() => navigate(-1)}>
-        <ArrowBackIcon /> Back
-      </Button>
-
-      <h1>{selectedPublication.name}</h1>
-      <p><b>Category: </b>{selectedPublication.category ? selectedPublication.category : 'Not assigned'}</p>
-      <p><b>Status: </b>{selectedPublication.status}</p>
-      <p><b>Created on: </b><i>{dateCreated}</i></p>
+      <AlignLeftContainer>
+        <Button onClick={() => navigate(-1)}>
+          <ArrowBackIcon /> Back
+        </Button>
+        
+        <h1>{selectedPublication.name}</h1>
+        <span><b>Category: </b>{selectedPublication.category ? selectedPublication.category : 'Not assigned'}</span>
+        <span><b>Status: </b>{selectedPublication.status}</span>
+        <span><b>Created on: </b><i>{dateCreated}</i></span>
+      </AlignLeftContainer>
+      
       <FlexContainer>
         <a href={selectedPublication.preview || '#'} title="preview" target="_blank" rel="noopener noreferrer">
           <PreviewIcon style={{ fontSize: 24, color: '#002B48', cursor: 'pointer' }} />

@@ -107,3 +107,16 @@ export const ControlBarContainer = styled.div`
     margin-bottom: 20px;
   }
 `;
+
+export const AlignLeftContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: -webkit-fill-available;
+  margin-left: 14%;
+
+  @media (max-width: 1024px) {
+    margin-left: 2%;
+  }
+}
+`;
