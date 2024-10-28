@@ -7,6 +7,7 @@ import Loader from './Loader.tsx';
 import { ResultsContainer, LoadingDetailContainer } from './styles/container/container.ts';
 import { Button } from './styles/button/button.styles.ts';
 import { formatDate } from '../utils/dateUtils.ts';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const PublicationDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -35,7 +36,7 @@ const PublicationDetail: React.FC = () => {
     return (
       <ResultsContainer>
         <Button onClick={() => navigate(-1)}>
-          ← Back
+          <ArrowBackIcon /> Back
         </Button>
         <p>Publication not found.</p>
       </ResultsContainer>
@@ -48,7 +49,7 @@ const PublicationDetail: React.FC = () => {
   return (
     <ResultsContainer>
       <Button onClick={() => navigate(-1)}>
-        ← Back
+        <ArrowBackIcon /> Back
       </Button>
 
       <h1>{selectedPublication.name}</h1>
