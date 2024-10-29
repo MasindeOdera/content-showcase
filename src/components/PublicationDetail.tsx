@@ -5,7 +5,8 @@ import { RootState, AppDispatch } from '../store/store.ts';
 import { fetchPublicationDetailThunk } from '../store/publicationsSlice.ts';
 import Loader from './Loader.tsx';
 import { ResultsContainer, LoadingDetailContainer, FlexContainer, AlignLeftContainer } from './styles/container/container.ts';
-import { Button } from './styles/button/button.styles.ts';
+import Button from './styles/button/button.ts';
+import IconWrapper from './styles/icon/icon.ts';
 import { formatDate } from '../utils/dateUtils.ts';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import PreviewIcon from '@mui/icons-material/Preview';
@@ -68,22 +69,22 @@ const PublicationDetail: React.FC = () => {
       
       <FlexContainer>
         <a href={selectedPublication.preview || '#'} title="preview" target="_blank" rel="noopener noreferrer">
-          <PreviewIcon style={{ fontSize: 24, color: '#002B48', cursor: 'pointer' }} />
+          <IconWrapper><PreviewIcon /></IconWrapper>
         </a>
         <a href={selectedPublication.editor || '#'} title="edit" target="_blank" rel="noopener noreferrer">
-          <EditNoteIcon style={{ fontSize: 24, color: '#002B48', cursor: 'pointer' }} />
+          <IconWrapper><EditNoteIcon /></IconWrapper>
         </a>
         <a href={selectedPublication.publish || '#'} title="publish" target="_blank" rel="noopener noreferrer">
-          <PublishIcon style={{ fontSize: 24, color: '#002B48', cursor: 'pointer' }} />
+          <IconWrapper><PublishIcon /></IconWrapper>
         </a>
         <a href={selectedPublication.personalize || '#'} title="personalize" target="_blank" rel="noopener noreferrer">
-          <SettingsAccessibilityIcon style={{ fontSize: 24, color: '#002B48', cursor: 'pointer' }} />
+          <IconWrapper><SettingsAccessibilityIcon /></IconWrapper>
         </a>
         <a href={selectedPublication.published || '#'} title="published" target="_blank" rel="noopener noreferrer">
-          <PublishedWithChangesIcon style={{ fontSize: 24, color: '#002B48', cursor: 'pointer' }} />
+          <IconWrapper><PublishedWithChangesIcon /></IconWrapper>
         </a>
         <a href={selectedPublication.self || '#'} title="edition" target="_blank" rel="noopener noreferrer">
-          <ContactPageIcon style={{ fontSize: 24, color: '#002B48', cursor: 'pointer' }} />
+          <IconWrapper><ContactPageIcon /></IconWrapper>
         </a>
       </FlexContainer>
       {publicationImageUrl && (
