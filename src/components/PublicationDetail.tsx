@@ -22,7 +22,6 @@ const PublicationDetail: React.FC = () => {
   const loading = useSelector((state: RootState) => state.publications.loading);
 
   const navigate = useNavigate();
-  console.log("detail: ", selectedPublication);
 
   useEffect(() => {
     if (id) {
