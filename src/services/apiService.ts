@@ -41,24 +41,20 @@ export const fetchProjectsByCategory = async (page = 1, limit = 20, newCategory:
     };
   }
 
-  // Only query for pagination
   const queryParams = new URLSearchParams();
   queryParams.append('page', page.toString());
   queryParams.append('limit', limit.toString());
 
-  // Add category filter
   if(newCategory !== '' && newCategory !== 'all') {
     queryParams.append('filter[0][field]', 'category');
     queryParams.append('filter[0][type]', 'eq');
     queryParams.append('filter[0][value]', newCategory);
 
-    // Add ordering (using array notation for order-by)
     queryParams.append('order-by[0][field]', 'name');
     queryParams.append('order-by[0][type]', 'field');
     queryParams.append('order-by[0][direction]', 'asc');
   }
 
-  // Construct the final URL
   const url = `https://api.foleon.com/v2/magazine/edition?${queryParams.toString()}`;
 
   const response = await axios.get(url, {
@@ -100,7 +96,6 @@ export const searchPublicationsByName = async (page = 1, limit = 20, searchQuery
   queryParams.append('page', page.toString());
   queryParams.append('limit', limit.toString());
 
-  // Add the search filter for the name
   if (searchQuery !== '') {
     queryParams.append('filter[0][field]', 'name');
     queryParams.append('filter[0][type]', 'eq');

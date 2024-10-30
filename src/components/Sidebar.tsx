@@ -10,22 +10,26 @@ const Sidebar: React.FC = () => {
     <SidebarContainer>
       <SidebarLink to="/">
         <SidebarIconWrapper>
-          <HomeIcon />Home
+          <HomeIcon fontSize="inherit" />
+          <span>Home</span>
         </SidebarIconWrapper>
       </SidebarLink>
       <SidebarLink to="/publications">
         <SidebarIconWrapper>
-          <FeedIcon /> Publications
+          <FeedIcon fontSize="inherit" />
+          <span>Publications</span>
         </SidebarIconWrapper>
       </SidebarLink>
       <SidebarLink to="/about">
         <SidebarIconWrapper>
-          <HelpCenterIcon />About
+          <HelpCenterIcon fontSize="inherit" />
+          <span>About</span>
         </SidebarIconWrapper>
       </SidebarLink>
       <SidebarLink to="/contact">
         <SidebarIconWrapper>
-          <ContactMailIcon />Contact
+          <ContactMailIcon fontSize="inherit" />
+          <span>Contact</span>
         </SidebarIconWrapper>
       </SidebarLink>
     </SidebarContainer>

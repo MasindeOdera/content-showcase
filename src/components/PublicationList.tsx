@@ -9,7 +9,6 @@ import { formatDate } from '../utils/dateUtils.ts';
 
 
 const PublicationList: React.FC = () => {
-  // Fetch publications and loading state from the Redux store
   const publications = useSelector((state: RootState) => state.publications.items);
   const loading = useSelector((state: RootState) => state.publications.loading);
   const searchQuery = useSelector((state: RootState) => state.publications.search);
@@ -19,12 +18,10 @@ const PublicationList: React.FC = () => {
   //Use the hook with 2 second delay
   const loadingWithDelay = useDelayedLoading(loading, 2000);
 
-  // Show loader during the delay.
   if (loadingWithDelay) {
     return (<ResultsContainer><Loader /></ResultsContainer>);
   }
 
-  // Show placeholder if no search or filter is applied
   if (!searchQuery && !filterCategory && (!publications || publications.length === 0)) {
     return (
       <ResultsContainer>

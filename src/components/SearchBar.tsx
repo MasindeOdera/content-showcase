@@ -15,7 +15,6 @@ const SearchBar: React.FC = () => {
 
   const [inputValue, setInputValue] = useState(searchQuery);
 
-  // Debounced search query value, 500ms
   const debouncedSearchQuery = useDebouncedValue(inputValue, 500);
 
   useEffect(() => {

@@ -127,5 +127,9 @@ export const ContentContainer = styled.div`
   width: 100%;
   background-color: #195082;
   border-radius: 20px;
+
+  @media (max-width: 768px) {
+    margin-left: 110px; 
+  }
 }
 `;

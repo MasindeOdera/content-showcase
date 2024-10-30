@@ -69,22 +69,22 @@ const PublicationDetail: React.FC = () => {
       
       <FlexContainer>
         <a href={selectedPublication.preview || '#'} title="preview" target="_blank" rel="noopener noreferrer">
-          <IconWrapper><PreviewIcon /></IconWrapper>
+          <IconWrapper><PreviewIcon fontSize="inherit" /></IconWrapper>
         </a>
         <a href={selectedPublication.editor || '#'} title="edit" target="_blank" rel="noopener noreferrer">
-          <IconWrapper><EditNoteIcon /></IconWrapper>
+          <IconWrapper><EditNoteIcon fontSize="inherit" /></IconWrapper>
         </a>
         <a href={selectedPublication.publish || '#'} title="publish" target="_blank" rel="noopener noreferrer">
-          <IconWrapper><PublishIcon /></IconWrapper>
+          <IconWrapper><PublishIcon fontSize="inherit" /></IconWrapper>
         </a>
         <a href={selectedPublication.personalize || '#'} title="personalize" target="_blank" rel="noopener noreferrer">
-          <IconWrapper><SettingsAccessibilityIcon /></IconWrapper>
+          <IconWrapper><SettingsAccessibilityIcon fontSize="inherit" /></IconWrapper>
         </a>
         <a href={selectedPublication.published || '#'} title="published" target="_blank" rel="noopener noreferrer">
-          <IconWrapper><PublishedWithChangesIcon /></IconWrapper>
+          <IconWrapper><PublishedWithChangesIcon fontSize="inherit" /></IconWrapper>
         </a>
         <a href={selectedPublication.self || '#'} title="edition" target="_blank" rel="noopener noreferrer">
-          <IconWrapper><ContactPageIcon /></IconWrapper>
+          <IconWrapper><ContactPageIcon fontSize="inherit" /></IconWrapper>
         </a>
       </FlexContainer>
       {publicationImageUrl && (
