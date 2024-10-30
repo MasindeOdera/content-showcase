@@ -15,6 +15,7 @@ The Content Showcase Application is a Proof of Concept (PoC) designed to demonst
 - **TypeScript**: To ensure type safety.
 - **Styled Components**: For component-level styling.
 - **Jest**: For unit testing.
+- **Flaticon**: Flag icons created by [Freepik](https://www.flaticon.com/free-icons/flag?k=1730304050426&sign-up=google).
 - **Material UI**: For icons and additional UI components. [Material Icons](https://mui.com/material-ui/material-icons/)
 
 ## Project Setup

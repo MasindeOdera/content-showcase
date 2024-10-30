@@ -118,7 +118,6 @@ export const AlignLeftContainer = styled.div`
   @media (max-width: 1024px) {
     margin-left: 2%;
   }
-}
 `;
 
 export const ContentContainer = styled.div`
@@ -131,5 +130,5 @@ export const ContentContainer = styled.div`
   @media (max-width: 768px) {
     margin-left: 110px; 
   }
-}
 `;
+

@@ -14,5 +14,5 @@ export { ResultsContainer,
     ControlBarContainer, 
     LoadingDetailContainer,
     AlignLeftContainer,
-    ContentContainer 
+    ContentContainer
 };

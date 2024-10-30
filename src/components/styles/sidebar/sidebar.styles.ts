@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const SidebarContainer = styled.div`
   width: 124px;
-  height: 24vh;
+  height: 32vh;
   background-color: #195082;
   padding: 10px;
   display: flex;
@@ -15,6 +15,7 @@ export const SidebarContainer = styled.div`
 
   @media (max-width: 768px) {
     width: 64px;
+    height: 38vh;
     align-items: center;
   }
 `;
@@ -51,6 +52,19 @@ export const SidebarIconWrapper = styled.div`
     
     span {
       display: none;
+    }
+  }
+`;
+
+export const SidebarFlags = styled.div`
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2px;
+
+    @media (max-width: 768px) {
+      gap: 8px;
     }
   }
 `;

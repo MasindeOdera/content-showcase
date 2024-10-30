@@ -1,3 +1,3 @@
-import { SidebarContainer, SidebarLink } from "./sidebar.styles.ts";
+import { SidebarContainer, SidebarLink, SidebarFlags } from "./sidebar.styles.ts";
 
-export { SidebarContainer, SidebarLink };
+export { SidebarContainer, SidebarLink, SidebarFlags };
