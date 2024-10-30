@@ -15,25 +15,25 @@ const Sidebar: React.FC = () => {
       <SidebarLink to="/">
         <SidebarIconWrapper>
           <HomeIcon fontSize="inherit" />
-          <span>{t('home')}</span>
+          <span>{t('sidebar.home')}</span>
         </SidebarIconWrapper>
       </SidebarLink>
       <SidebarLink to="/publications">
         <SidebarIconWrapper>
           <FeedIcon fontSize="inherit" />
-          <span>{t('publications')}</span>
+          <span>{t('sidebar.publications')}</span>
         </SidebarIconWrapper>
       </SidebarLink>
       <SidebarLink to="/about">
         <SidebarIconWrapper>
           <HelpCenterIcon fontSize="inherit" />
-          <span>{t('about')}</span>
+          <span>{t('sidebar.about')}</span>
         </SidebarIconWrapper>
       </SidebarLink>
       <SidebarLink to="/contact">
         <SidebarIconWrapper>
           <ContactMailIcon fontSize="inherit" />
-          <span>{t('contact')}</span>
+          <span>{t('sidebar.contact')}</span>
         </SidebarIconWrapper>
       </SidebarLink>
       <SidebarFlags>

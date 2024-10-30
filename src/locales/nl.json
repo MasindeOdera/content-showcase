@@ -1,8 +1,20 @@
 {
-    "title": "Toon inhoud applicatie",
-    "home": "Huis",
-    "publications": "Publicaties",
-    "about": "Over",
-    "contact": "Contact"
+    "sidebar": {
+        "home": "Huis",
+        "publications": "Publicaties",
+        "about": "Over",
+        "contact": "Contact"
+    },
+    "home": {
+        "title": "Welkom bij Blue Day!",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+    },
+    "about": {
+        "title": "Over Blue Day",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+    },
+    "contact": {
+        "title": "Neem contact op",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+    }
 }
-  

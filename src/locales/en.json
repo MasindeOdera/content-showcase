@@ -1,8 +1,20 @@
 {
-    "title": "Content Showcase Application",
-    "home": "Home",
-    "publications": "Publications",
-    "about": "About",
-    "contact": "Contact"
+    "sidebar": {
+        "home": "Home",
+        "publications": "Publications",
+        "about": "About",
+        "contact": "Contact"
+    },
+    "home": {
+        "title": "Welcome to Blue Day!",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+    },
+    "about": {
+        "title": "About Blue Day",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+    },
+    "contact": {
+        "title": "Contact Us",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+    }
 }
-  

@@ -8,6 +8,7 @@ The Content Showcase Application is a Proof of Concept (PoC) designed to demonst
 - OAuth authentication for secure access to the API.
 - Pagination support to manage large datasets.
 - Responsive design using Styled Components.
+- **Multilingual Support**: Users can toggle between English, Dutch, and French, with all interface elements updating to the selected language.
 
 ## Tech Stack
 - **Vite**: For fast development builds.

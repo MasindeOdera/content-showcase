@@ -1,8 +1,20 @@
 {
-    "title": "Application de présentation de contenu",
-    "home": "Accueil",
-    "publications": "Publications",
-    "about": "À propos",
-    "contact": "Contact"
+    "sidebar": {
+        "home": "Accueil",
+        "publications": "Publications",
+        "about": "À propos",
+        "contact": "Contact"
+    },
+    "home": {
+        "title": "Bienvenue à Blue Day!",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+    },
+    "about": {
+        "title": "À propos de Blue Day",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+    },
+    "contact": {
+        "title": "Contactez-nous",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+    }
 }
-  
