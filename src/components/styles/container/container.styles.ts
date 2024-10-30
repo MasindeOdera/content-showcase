@@ -126,5 +126,6 @@ export const ContentContainer = styled.div`
   padding: 14px; 
   width: 100%;
   background-color: #195082;
+  border-radius: 20px;
 }
 `;
