@@ -16,5 +16,23 @@
     "contact": {
         "title": "Contactez-nous",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+    },
+    "searchbar": {
+        "placeholder": "Tapez pour lancer la recherche..."
+    },
+    "filter": {
+        "default": "Filtrer par catégorie"
+    },
+    "publicationlist": {
+        "suggestion": "Veuillez utiliser le filtre ou la recherche pour voir les publications.",
+        "status": "Statut: ",
+        "lastpublished": "Dernière publication: ",
+        "notfound": "Aucune publication trouvée"
+    },
+    "publicationdetail": {
+        "category": "Catégorie: ",
+        "status": "Statut: ",
+        "created": "Créé le: ",
+        "back": "Retour"
     }
 }

@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { RootState, AppDispatch } from '../store/store.ts';
 import { fetchPublicationDetailThunk } from '../store/publicationsSlice.ts';
 import Loader from './Loader.tsx';
-import { ResultsContainer, LoadingDetailContainer, FlexContainer, AlignLeftContainer } from './styles/container/container.ts';
+import { DetailsContainer, LoadingDetailContainer, FlexContainer, AlignLeftContainer } from './styles/container/container.ts';
 import Button from './styles/button/button.ts';
 import IconWrapper from './styles/icon/icon.ts';
 import { formatDate } from '../utils/dateUtils.ts';
@@ -17,6 +18,7 @@ import PublishedWithChangesIcon from '@mui/icons-material/PublishedWithChanges';
 import ContactPageIcon from '@mui/icons-material/ContactPage';
 
 const PublicationDetail: React.FC = () => {
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const dispatch = useDispatch<AppDispatch>();
   const selectedPublication = useSelector((state: RootState) => state.publications.selectedPublication);
@@ -40,14 +42,14 @@ const PublicationDetail: React.FC = () => {
 
   if (!selectedPublication) {
     return (
-      <ResultsContainer>
+      <DetailsContainer>
         <AlignLeftContainer>
           <Button onClick={() => navigate(-1)}>
-            <ArrowBackIcon /> Back
+            <ArrowBackIcon /> {t('publicationdetail.back')}
           </Button>
         </AlignLeftContainer>
-        <p>Publication not found.</p>
-      </ResultsContainer>
+        <p>{t('publicationlist.notfound')}.</p>
+      </DetailsContainer>
     );
   }
 
@@ -55,16 +57,16 @@ const PublicationDetail: React.FC = () => {
   const dateCreated = formatDate(selectedPublication.created_on);
 
   return (
-    <ResultsContainer>
+    <DetailsContainer>
       <AlignLeftContainer>
         <Button onClick={() => navigate(-1)}>
-          <ArrowBackIcon /> Back
+          <ArrowBackIcon /> {t('publicationdetail.back')}
         </Button>
         
         <h1>{selectedPublication.name}</h1>
-        <span><b>Category: </b>{selectedPublication.category ? selectedPublication.category : 'Not assigned'}</span>
-        <span><b>Status: </b>{selectedPublication.status}</span>
-        <span><b>Created on: </b><i>{dateCreated}</i></span>
+        <span><b>{t('publicationdetail.category')}</b>{selectedPublication.category ? selectedPublication.category : 'Not assigned'}</span>
+        <span><b>{t('publicationdetail.status')}</b>{selectedPublication.status}</span>
+        <span><b>{t('publicationdetail.created')}</b><i>{dateCreated}</i></span>
       </AlignLeftContainer>
       
       <FlexContainer>
@@ -90,7 +92,7 @@ const PublicationDetail: React.FC = () => {
       {publicationImageUrl && (
         <img src={publicationImageUrl} alt="Image" title={selectedPublication.name} style={{ maxWidth: '100%' }} />
       )}
-    </ResultsContainer>
+    </DetailsContainer>
   );
 };
 

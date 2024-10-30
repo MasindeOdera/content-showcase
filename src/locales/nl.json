@@ -16,5 +16,23 @@
     "contact": {
         "title": "Neem contact op",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+    },
+    "searchbar": {
+        "placeholder": "Typ om te beginnen met zoeken..."
+    },
+    "filter": {
+        "default": "Filteren op categorie"
+    },
+    "publicationlist": {
+        "suggestion": "Gebruik het filter of de zoekfunctie om de publicaties te bekijken.",
+        "status": "Status: ",
+        "lastpublished": "Laatst gepubliceerd: ",
+        "notfound": "Geen publicaties gevonden"
+    },
+    "publicationdetail": {
+        "category": "Categorie: ",
+        "status": "Status: ",
+        "created": "Gemaakt op: ",
+        "back": "Terug"
     }
 }

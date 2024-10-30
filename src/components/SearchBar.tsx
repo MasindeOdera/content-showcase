@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../store/store.ts';
 import { setSearchQuery } from '../store/publicationsSlice.ts';
@@ -8,6 +9,7 @@ import { useDebouncedValue } from '../hooks/useDebouncedValue.ts';
 import { searchPublicationsByNameThunk } from '../store/publicationsSlice.ts';
 
 const SearchBar: React.FC = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
   const searchQuery = useSelector((state: RootState) => state.publications.search);
   const currentPage = useSelector((state: RootState) => state.publications.currentPage);
@@ -38,7 +40,7 @@ const SearchBar: React.FC = () => {
     <Container>
       <Input
         type="text"
-        placeholder="Type to start search..."
+        placeholder={t('searchbar.placeholder')}
         value={inputValue}
         onChange={handleSearchChange}
       />

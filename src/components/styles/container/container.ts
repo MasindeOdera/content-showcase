@@ -5,7 +5,8 @@ import {
     ControlBarContainer, 
     LoadingDetailContainer,
     AlignLeftContainer,
-    ContentContainer
+    ContentContainer,
+    DetailsContainer
 } from "./container.styles.ts";
 
 export default Container;
@@ -14,5 +15,6 @@ export { ResultsContainer,
     ControlBarContainer, 
     LoadingDetailContainer,
     AlignLeftContainer,
-    ContentContainer
+    ContentContainer,
+    DetailsContainer
 };

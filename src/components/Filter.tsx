@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../store/store.ts';
 import { setFilter } from '../store/publicationsSlice.ts';
@@ -8,6 +9,7 @@ import Container from './styles/container/container.ts';
 
 
 const Filter: React.FC = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
 
   const selectedCategory = useSelector((state: RootState) => state.publications.category);
@@ -27,7 +29,7 @@ const Filter: React.FC = () => {
   return (
     <Container>
       <FilterSelect id="category" value={selectedCategory} onChange={handleFilterChange}>
-        <option value="">Filter by category</option>
+        <option value="">{t('filter.default')}</option>
         {filterOptions.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/store.ts';
 import { ResultsContainer, FlexContainer } from './styles/container/container.ts';
@@ -9,6 +10,7 @@ import { formatDate } from '../utils/dateUtils.ts';
 
 
 const PublicationList: React.FC = () => {
+  const { t } = useTranslation();
   const publications = useSelector((state: RootState) => state.publications.items);
   const loading = useSelector((state: RootState) => state.publications.loading);
   const searchQuery = useSelector((state: RootState) => state.publications.search);
@@ -25,7 +27,7 @@ const PublicationList: React.FC = () => {
   if (!searchQuery && !filterCategory && (!publications || publications.length === 0)) {
     return (
       <ResultsContainer>
-        <p>Please use the Filter or Search to see the publications.</p>
+        <p>{t('publicationlist.suggestion')}</p>
       </ResultsContainer>
     );
   }
@@ -46,15 +48,15 @@ const PublicationList: React.FC = () => {
                   </div>
                   <div>
                     <h3>{publication.name}</h3>
-                    <p>Status: <b>{publication.status}</b></p>
-                    <p>Last Published: <i>{dateModified}</i></p>
+                    <p>{t('publicationlist.status')}<b>{publication.status}</b></p>
+                    <p>{t('publicationlist.lastpublished')}<i>{dateModified}</i></p>
                   </div>
                 </Link>
               </Card>
             );
           })
         ) : (
-          <p>No publications found</p>
+          <p>{t('publicationlist.notfound')}</p>
         )}
       </FlexContainer>
     </ResultsContainer>

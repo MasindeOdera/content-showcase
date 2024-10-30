@@ -1,3 +1,5 @@
+import i18n from 'i18next';
+
 export const formatDate = (dateString?: string) => {
   if (!dateString) {
       return 'No date available';
@@ -8,13 +10,15 @@ export const formatDate = (dateString?: string) => {
   if (isNaN(date.getTime())) {
       return 'Invalid date';
   }
+
+  const currentLang = i18n.language || 'en';
   
-  return date.toLocaleString('en-US', {
+  return date.toLocaleString(currentLang, {
       month: 'long',
       day: 'numeric',
       year: 'numeric',
       hour: 'numeric',
       minute: 'numeric',
-      hour12: true,
+      hour12: false,
   });
 };

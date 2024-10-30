@@ -132,3 +132,6 @@ export const ContentContainer = styled.div`
   }
 `;
 
+export const DetailsContainer = styled(ResultsContainer)`
+  min-height: 620px;
+`;
