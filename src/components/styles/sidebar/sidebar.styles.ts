@@ -66,5 +66,11 @@ export const SidebarFlags = styled.div`
     @media (max-width: 768px) {
       gap: 8px;
     }
+
+    img {
+      cursor: pointer;
+      width: 24px;
+      margin: 0 8px;
+    }
   }
 `;

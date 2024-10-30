@@ -1,5 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import ukFlag from '../assets/uk.png';
+import nlFlag from '../assets/nl.png';
+import frFlag from '../assets/fr.png';
 
 const LanguageSelector: React.FC = () => {
   const { i18n } = useTranslation();
@@ -11,22 +14,19 @@ const LanguageSelector: React.FC = () => {
   return (
     <div>
       <img
-        src="/assets/uk.png"
+        src={ukFlag}
         alt="English"
         onClick={() => changeLanguage('en')}
-        style={{ cursor: 'pointer', width: '24px', margin: '0 8px' }}
       />
       <img
-        src="/assets/nl.png"
+        src={nlFlag}
         alt="Nederlands"
         onClick={() => changeLanguage('nl')}
-        style={{ cursor: 'pointer', width: '24px', margin: '0 8px' }}
       />
       <img
-        src="/assets/fr.png"
+        src={frFlag}
         alt="Français"
         onClick={() => changeLanguage('fr')}
-        style={{ cursor: 'pointer', width: '24px', margin: '0 8px' }}
       />
     </div>
   );
