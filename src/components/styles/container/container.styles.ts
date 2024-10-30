@@ -20,6 +20,8 @@ export const Container = styled.div`
 export const ResultsContainer = styled(Container)`
   width: -webkit-fill-available;
   min-height: 160px;
+  max-height: 488px;
+  overflow-y: auto;
   color: #000;
   background: #fff;
   border: 1px solid #ccc;
@@ -92,14 +94,12 @@ export const ControlBarContainer = styled.div`
   gap: 20px;
   margin-bottom: 0px;
   
-  /* Ensure the items stack on smaller screens */
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 0px;
     margin-bottom: 8px;
   }
 
-  /* Customize widths for larger screens */
   & > * {
     flex: 1;
     gap: 20px;

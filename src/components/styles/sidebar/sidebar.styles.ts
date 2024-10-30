@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const SidebarContainer = styled.div`
   width: 124px;
-  height: 100vh;
+  height: 24vh;
   background-color: #195082;
   padding: 10px;
   display: flex;
@@ -39,6 +39,7 @@ export const SidebarLink = styled(Link)`
 
 export const SidebarIconWrapper = styled.div`
   display: flex;
+  align-items: center;
   gap: 6px;
   cursor: pointer;
   transition: color 0.2s ease-in-out, font-size 0.2s ease-in-out;
