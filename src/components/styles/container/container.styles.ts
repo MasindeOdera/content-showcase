@@ -120,3 +120,11 @@ export const AlignLeftContainer = styled.div`
   }
 }
 `;
+
+export const ContentContainer = styled.div`
+  margin-left: 150px; 
+  padding: 14px; 
+  width: 100%;
+  background-color: #195082;
+}
+`;

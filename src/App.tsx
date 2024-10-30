@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PublicationView from './views/PublicationView.tsx';
 import PublicationDetail from './components/PublicationDetail.tsx';
 import Container from './components/styles/container/container.ts';
+import { ContentContainer } from './components/styles/container/container.ts';
 import Home from './views/Home.tsx';
 import About from './views/About.tsx';
 import Contact from './views/Contact.tsx';
@@ -14,7 +15,7 @@ const App: React.FC = () => {
     <Router>
       <div style={{ display: 'flex' }}>
         <Sidebar />
-        <div style={{ marginLeft: '200px', padding: '20px', width: '100%' }}>
+        <ContentContainer >
           <Container>
             <Routes>
               <Route path="/" element={<Home />} />
@@ -25,7 +26,7 @@ const App: React.FC = () => {
               <Route path="*" element={<div>Page not found</div>} />
             </Routes>
           </Container>
-        </div>
+        </ContentContainer>
       </div>
     </Router>
   );

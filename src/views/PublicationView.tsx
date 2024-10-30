@@ -9,7 +9,6 @@ const PublicationView: React.FC = () => {
 
   return (
     <div>
-      <h1>Foleon Publications</h1>
       <ControlBarContainer>
         <SearchBar />
         <Filter />
